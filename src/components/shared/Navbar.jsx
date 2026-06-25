@@ -135,10 +135,10 @@ export default function Navbar() {
               </div>
             ) : (
               <div className="nav-auth">
-                <Link href="/login" className="rounded-lg border border-green-200 px-4 py-2 text-[13.5px] font-medium text-green-800 no-underline hover:bg-green-50 hover:border-green-400 transition-all">
+                <Link href="/auth/login" className="rounded-lg border border-green-200 px-4 py-2 text-[13.5px] font-medium text-green-800 no-underline hover:bg-green-50 hover:border-green-400 transition-all">
                   Log in
                 </Link>
-                <Link href="/register" className="rounded-lg bg-green-700 px-4 py-2 text-[13.5px] font-medium text-white no-underline hover:bg-green-800 transition-colors shadow-sm">
+                <Link href="/auth/signup" className="rounded-lg bg-green-700 px-4 py-2 text-[13.5px] font-medium text-white no-underline hover:bg-green-800 transition-colors shadow-sm">
                   Sign up
                 </Link>
               </div>
@@ -163,8 +163,8 @@ export default function Navbar() {
             ))}
             {!user && (
               <div className="flex gap-2 mt-3 pt-3 border-t border-green-50">
-                <Link href="/login" className="flex-1 text-center rounded-lg border border-green-200 py-2 text-[13.5px] font-medium text-green no-underline">Log in </Link>
-                <Link href="/register" className="flex-1 text-center rounded-lg bg-green-700 py-2 text-[13.5px] font-medium text-white no-underline">Sign up</Link>
+                <Link href="/auth/login" className="flex-1 text-center rounded-lg border border-green-200 py-2 text-[13.5px] font-medium text-green no-underline">Log in </Link>
+                <Link href="/auth/signup" className="flex-1 text-center rounded-lg bg-green-700 py-2 text-[13.5px] font-medium text-white no-underline">Sign up</Link>
               </div>
             )}
           </div>
