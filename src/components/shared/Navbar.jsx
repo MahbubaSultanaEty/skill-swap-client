@@ -16,7 +16,7 @@ const navLinks = [
 export default function Navbar() {
   const pathname = usePathname();
 //   const { data: session } = authClient.useSession();
-  const user = {};
+  const user = null;
 
   const [mobileOpen, setMobileOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -77,7 +77,7 @@ export default function Navbar() {
 
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 no-underline shrink-0">
-            <Image src="/logo.png" alt="SkillSwap" width={36} height={36} className="rounded-lg" />
+            <Image src="/logo.png" alt="SkillSwap" width={40} height={40} className="rounded-lg" />
            <span style={{ color: "#14532d" }} className="text-[17px] font-semibold tracking-tight">
   SkillSwap
 </span>
@@ -163,7 +163,7 @@ export default function Navbar() {
             ))}
             {!user && (
               <div className="flex gap-2 mt-3 pt-3 border-t border-green-50">
-                <Link href="/login" className="flex-1 text-center rounded-lg border border-green-200 py-2 text-[13.5px] font-medium text-green-800 no-underline">Log in</Link>
+                <Link href="/login" className="flex-1 text-center rounded-lg border border-green-200 py-2 text-[13.5px] font-medium text-green no-underline">Log in </Link>
                 <Link href="/register" className="flex-1 text-center rounded-lg bg-green-700 py-2 text-[13.5px] font-medium text-white no-underline">Sign up</Link>
               </div>
             )}
