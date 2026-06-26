@@ -130,7 +130,7 @@ export default function Navbar() {
                     <Link href={dashboardHref} className="dropdown-item">
                       <LayoutDashboard size={15} /> Dashboard
                     </Link>
-                    <Link href={`/dashboard/${user?.role}/profile`} className="dropdown-item">
+                    <Link href={`/profile`} className="dropdown-item">
                       <User size={15} /> profile
                     </Link>
                     <div className="divider" />
