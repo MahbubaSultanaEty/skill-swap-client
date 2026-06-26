@@ -168,9 +168,9 @@ export default function HowItWorksPage() {
         <h2 className="relative z-10 mb-3 text-4xl font-extrabold tracking-tight" style={{ color: "#fff" }}>Ready to get started?</h2>
         <p className="relative z-10 mb-8 text-[16px]" style={{ color: "rgba(255,255,255,0.75)" }}>Join thousands of clients and freelancers already using SkillSwap</p>
         <div className="relative z-10 flex flex-wrap items-center justify-center gap-3">
-          <Link href="/register" className="inline-flex items-center gap-2 rounded-xl px-7 py-3.5 text-[15px] font-bold no-underline transition-all hover:-translate-y-0.5" style={{ background: "#fff", color: "#14532d" }}>
+          {/* <Link href="/register" className="inline-flex items-center gap-2 rounded-xl px-7 py-3.5 text-[15px] font-bold no-underline transition-all hover:-translate-y-0.5" style={{ background: "#fff", color: "#14532d" }}>
             Post a Task <ArrowRight size={15} />
-          </Link>
+          </Link> */}
           <Link href="/tasks" className="inline-flex items-center rounded-xl border-2 px-7 py-3.5 text-[15px] font-semibold no-underline transition-all hover:opacity-80" style={{ borderColor: "rgba(255,255,255,0.4)", color: "#fff" }}>
             Browse Tasks
           </Link>

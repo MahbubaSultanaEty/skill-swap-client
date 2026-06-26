@@ -25,6 +25,7 @@ import { useRouter } from "next/navigation";
 
 const PostTaskForm = ({ client }) => {
   const router = useRouter();
+
   const [form, setForm] = useState({
     title: "",
     category: "",
@@ -35,12 +36,8 @@ const PostTaskForm = ({ client }) => {
 
   const [loading, setLoading] = useState(false);
 
-  // generic state update
   const handleChange = (key, value) => {
-    setForm((prev) => ({
-      ...prev,
-      [key]: value,
-    }));
+    setForm((prev) => ({ ...prev, [key]: value }));
   };
 
   const handleSubmit = async (e) => {
@@ -48,27 +45,24 @@ const PostTaskForm = ({ client }) => {
     setLoading(true);
 
     try {
-      // ১. ডাটাবেজ রিকোয়ারমেন্টের সব ফিল্ড একসাথে রেডি করা
       const taskData = {
         title: form.title,
         category: form.category,
         description: form.description,
-        budget: Number(form.budget), // বাজেটকে স্ট্রিং থেকে পিওর নাম্বারে কনভার্ট করা হলো
+        budget: Number(form.budget),
         deadline: form.deadline,
-        clientId: client?.id || client?._id, // আইডি ব্যাকআপ হ্যান্ডেল করা হলো
+        clientId: client?.id || client?._id,
         clientEmail: client?.email,
-        clientName: client?.name || "", // হোমপেজে নাম দেখানোর জন্য যুক্ত করা হলো
-        status: "open", // রিকোয়ারমেন্ট অনুযায়ী ডিফল্ট ওপেন
-        deliverable_url: "", // ইনিশিয়াল ফাঁকা স্ট্রিং
-        createdAt: new Date().toISOString(), // টাস্ক তৈরির লাইভ টাইমস্ট্যাম্প
+        clientName: client?.name || "",
+        status: "open",
+        deliverable_url: "",
+        createdAt: new Date().toISOString(),
       };
 
-      // ২. আগে সার্ভারে ডেটা পাঠানো নিশ্চিত করা
-      await createTask(taskData); 
+      await createTask(taskData);
 
-      // ৩. সাকসেস মেসেজ ও ফর্ম রিসেট
       toast.success("Task posted successfully!");
-      
+
       setForm({
         title: "",
         category: "",
@@ -76,10 +70,8 @@ const PostTaskForm = ({ client }) => {
         budget: "",
         deadline: "",
       });
-        
-      // ৪. রিডাইরেকশন
+
       router.push("/dashboard/client/my-tasks");
-            
     } catch (err) {
       toast.error(err.message || "Failed to post task");
     } finally {
@@ -102,44 +94,33 @@ const PostTaskForm = ({ client }) => {
         <FieldError />
       </TextField>
 
-      {/* CATEGORY - FIXED SELECT (SET BASED API) */}
-      <Select
-        selectedKeys={form.category ? new Set([form.category]) : new Set()}
-        onSelectionChange={(keys) => {
-          const value = Array.from(keys)[0];
-          handleChange("category", value);
-        }}
-      >
+      {/* CATEGORY (STABLE FIX - NO onSelectionChange BUG) */}
+      <TextField>
         <Label>Category</Label>
 
-        <SelectTrigger>
-          <SelectValue placeholder="Select category" />
-          <SelectIndicator />
-        </SelectTrigger>
+        <select
+          value={form.category}
+          onChange={(e) => handleChange("category", e.target.value)}
+          className="w-full border rounded-md px-3 py-2"
+        >
+          <option value="" >Select category</option>
+          <option value="Design">Design</option>
+          <option value="Writing">Writing</option>
+          <option value="Development">Development</option>
+          <option value="Marketing">Marketing</option>
+          <option value="Other">Other</option>
+        </select>
 
         <Description>Select task category</Description>
-
-        <SelectPopover>
-          <ListBox>
-            <ListBoxItem key="Design">Design</ListBoxItem>
-            <ListBoxItem key="Writing">Writing</ListBoxItem>
-            <ListBoxItem key="Development">Development</ListBoxItem>
-            <ListBoxItem key="Marketing">Marketing</ListBoxItem>
-            <ListBoxItem key="Other">Other</ListBoxItem>
-          </ListBox>
-        </SelectPopover>
-
         <FieldError />
-      </Select>
+      </TextField>
 
       {/* DESCRIPTION */}
       <TextField>
         <Label>Description</Label>
         <TextArea
           value={form.description}
-          onChange={(e) =>
-            handleChange("description", e.target.value)
-          }
+          onChange={(e) => handleChange("description", e.target.value)}
           placeholder="Describe your task"
         />
         <Description>Explain what you need clearly</Description>
@@ -153,7 +134,6 @@ const PostTaskForm = ({ client }) => {
           type="number"
           value={form.budget}
           onChange={(e) => handleChange("budget", e.target.value)}
-          placeholder="e.g. 50"
         />
         <Description>Set your budget</Description>
         <FieldError />
@@ -167,7 +147,6 @@ const PostTaskForm = ({ client }) => {
           value={form.deadline}
           onChange={(e) => handleChange("deadline", e.target.value)}
         />
-        <Description>Choose completion date</Description>
         <FieldError />
       </TextField>
 

@@ -1,4 +1,5 @@
 import { getClientTasks } from "@/lib/api/task";
+import { getUserSession } from "@/lib/core/session";
 import { Table, Chip, User } from "@heroui/react";
 import Link from "next/link";
 
@@ -8,8 +9,10 @@ export const metadata = {
 };
 
 export default async function MyTasksPage() {
-  const currentClientId = "6a3e1cf2af12d927e908bd1a"; 
+  const user = await getUserSession();
+  const currentClientId = user?.id; 
   const tasks = (await getClientTasks(currentClientId)) || [];
+  console.log(tasks);
 
   // স্ট্যাটস ক্যালকুলেশন
   const totalTasks = tasks.length;
@@ -41,13 +44,13 @@ export default async function MyTasksPage() {
       {/* হেডার সেকশন */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-10 pb-6 border-b border-neutral-200">
         <div>
-          <h1 className="text-3xl font-extrabold tracking-tight text-neutral-900">Task Management</h1>
+          <h1 className="text-3xl font-extrabold tracking-tight text-green-900">Task Management</h1>
           <p className="text-sm text-neutral-500 mt-1">Monitor metrics, track hiring status, and check active deliverables.</p>
         </div>
-        <div className="flex gap-3">
+        {/* <div className="flex gap-3">
           <button className="text-xs font-semibold bg-white border border-neutral-200 text-neutral-700 px-4 py-2.5 rounded-xl shadow-sm hover:bg-neutral-50 transition">Export History</button>
-          <button className="text-xs font-semibold bg-black text-white px-4 py-2.5 rounded-xl shadow-sm hover:bg-neutral-800 transition">+ Post New Task</button>
-        </div>
+          <button className="text-xs font-semibold bg-green-950 text-white px-4 py-2.5 rounded-xl shadow-sm hover:bg-neutral-800 transition">+ Post New Task</button>
+        </div> */}
       </div>
 
       {/* স্ট্যাটস কার্ড */}
@@ -58,7 +61,7 @@ export default async function MyTasksPage() {
         </div>
         <div className="bg-white p-6 rounded-2xl border border-neutral-100 shadow-sm">
           <p className="text-xs font-medium text-neutral-400 uppercase tracking-wider">Active Progress</p>
-          <p className="text-2xl font-bold text-primary mt-2">{inProgressTasks} Running</p>
+          <p className="text-2xl font-bold text-neutral-900 mt-2">{inProgressTasks} Running</p>
         </div>
         <div className="bg-white p-6 rounded-2xl border border-neutral-100 shadow-sm">
           <p className="text-xs font-medium text-neutral-400 uppercase tracking-wider">Total Investment</p>
@@ -69,13 +72,13 @@ export default async function MyTasksPage() {
       {/* মেইন টেবিল */}
       <div className="bg-white rounded-2xl border border-neutral-100 shadow-sm overflow-hidden">
         <div className="px-6 py-4 border-b border-neutral-100">
-          <h2 className="text-lg font-bold text-neutral-800">All Posted Projects</h2>
+          <h2 className="text-lg font-bold text-neutral-900">All Posted Projects</h2>
         </div>
 
         <Table aria-label="Client tasks detailed management dashboard" className="p-2">
           <Table.ScrollContainer>
             <Table.Content>
-              <Table.Header>
+              <Table.Header >
                 <Table.Column isRowHeader>PROJECT DETAILS</Table.Column>
                 <Table.Column>CATEGORY</Table.Column>
                 <Table.Column>BUDGET</Table.Column>
@@ -90,7 +93,7 @@ export default async function MyTasksPage() {
                     <Table.Row key={task._id} className="hover:bg-neutral-50/50 transition-colors">
                       <Table.Cell isRowHeader>
                         <div className="flex flex-col">
-                          <span className="font-semibold text-neutral-900 text-base">{task.title}</span>
+                          <span className="font-semibold text-green-950 text-base">{task.title}</span>
                           <span className="text-xs text-neutral-400 mt-0.5">ID: {task._id?.substring(0, 8)}...</span>
                         </div>
                       </Table.Cell>
@@ -99,11 +102,15 @@ export default async function MyTasksPage() {
                         <Chip size="sm" variant="dot" color="default" className="border-neutral-200 text-neutral-600 font-medium">{task.category || "General"}</Chip>
                       </Table.Cell>
                       
-                      <Table.Cell><span className="font-bold text-neutral-900">${task.budget}</span></Table.Cell>
+                      <Table.Cell><span className="font-bold text-green-900">${task.budget}</span></Table.Cell>
                       
                       <Table.Cell>
                         <div className="flex flex-col text-xs gap-0.5">
-                          <span className="text-neutral-500">Posted: {task.createdAt || "Recent"}</span>
+                          <span className="text-neutral-500">Posted: {new Date(task?.createdAt).toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+}) || "Recent"}</span>
                           <span className="text-danger-500 font-medium">Due: {task.deadline}</span>
                         </div>
                       </Table.Cell>                                 

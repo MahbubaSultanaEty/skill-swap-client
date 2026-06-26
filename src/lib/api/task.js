@@ -5,3 +5,5 @@ export const getClientTasks = async (clientId) => {
     const res = await fetch(`${baseUrl}/api/tasks/${clientId}`);
     return res.json();
 }
+
+
