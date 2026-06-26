@@ -34,7 +34,7 @@ export default function SignupPage() {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  const [role, setRole] = useState("client");
+  const [role, setRole] = useState("freelancer");
 
   const [status, setStatus] = useState({
     type: "",
@@ -299,7 +299,7 @@ export default function SignupPage() {
   <Label>Account Type</Label>
 
  <RadioGroup
-  defaultValue="client"
+  defaultValue="freelancer"
   name="role"
   orientation="horizontal"
   onChange={(value) => setRole(value)}
@@ -326,7 +326,7 @@ export default function SignupPage() {
 
               <Button
                 type="submit"
-                className="h-12 bg-[#166534] text-white hover:bg-[#15803d]"
+                className="h-12 w-full bg-[#166534] text-white hover:bg-[#15803d]"
               >
                 <Check />
                 Create Account
