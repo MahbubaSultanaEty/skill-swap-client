@@ -1,19 +1,20 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { Button } from "@heroui/react";
-
 import { FaGoogle } from "react-icons/fa";
+import { toast } from "react-toastify";
+
 
 export default function GoogleSignInButton() {
-  const handleGoogleSignIn = async () => {
-    try {
-      await signIn.social({
-        provider: "google",
-        callbackURL: "/",
-      });
-    } catch (error) {
-      console.log(error);
-    }
+  const handleGoogleSignIn = async() => {
+        const data = await authClient.signIn.social({
+          provider: "google",
+          callbackURL: "/"
+        })
+        if (data) {
+          toast.success("  Signing in...")
+        }
   };
 
   return (

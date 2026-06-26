@@ -41,7 +41,7 @@ export default function SignupPage() {
     message: "",
   });
 
-    console.log("role",role)
+    // console.log("role",role)
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -208,7 +208,7 @@ export default function SignupPage() {
                 <Label>Full Name</Label>
                 <Input
                   name="name"
-                  placeholder="John Doe"
+                  placeholder="Enter your name"
                 />
                 <FieldError />
               </TextField>
@@ -236,7 +236,7 @@ export default function SignupPage() {
                 <Label>Email Address</Label>
                 <Input
                   name="email"
-                  placeholder="john@example.com"
+                  placeholder="Enter your email"
                 />
                 <FieldError />
               </TextField>
@@ -285,7 +285,7 @@ export default function SignupPage() {
                       !showPassword
                     )
                   }
-                  className="absolute right-5 top-10 z-50 cursor-pointer"
+                  className="absolute right-5 top-9 z-50 cursor-pointer"
                 >
                   {showPassword ? (
                     <Eye />
@@ -363,7 +363,7 @@ export default function SignupPage() {
             <p className="mt-6 text-center text-sm text-gray-500">
               Already have an account?{" "}
               <Link
-                href="/login"
+                href="/auth/login"
                 className="font-medium text-[#166534]"
               >
                 Login

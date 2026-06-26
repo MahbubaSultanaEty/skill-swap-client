@@ -3,8 +3,12 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Search, Users, Info, LayoutDashboard, LogOut, Menu, X, ChevronDown, User } from "lucide-react";
+import { authClient } from "@/lib/auth-client";
+import { toast } from "react-toastify";
+
+
 
 
 const navLinks = [
@@ -15,8 +19,10 @@ const navLinks = [
 
 export default function Navbar() {
   const pathname = usePathname();
-//   const { data: session } = authClient.useSession();
-  const user = null;
+  const { data: session } = authClient.useSession();
+  const user = session?.user;
+  // console.log("user", user);
+  const router= useRouter()
 
   const [mobileOpen, setMobileOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -38,7 +44,8 @@ export default function Navbar() {
 
   const handleLogout = async () => {
     await authClient.signOut();
-    window.location.href = "/";
+    toast("user logged out")
+    // router.push("/")
   };
 
   const dashboardHref =
@@ -101,12 +108,12 @@ export default function Navbar() {
               <div style={{ position: "relative" }} ref={dropdownRef}>
                 <button
                   onClick={() => setDropdownOpen((p) => !p)}
-                  className="flex items-center gap-1.5 rounded-xl border border-green-200 bg-green-950 px-2 py-1.5 shadow-sm cursor-pointer hover:border-green-400 transition-all"
+                  className="flex items-center gap-1.5 rounded-xl border border-green-200 bg-green-200 px-2 py-1.5 shadow-sm cursor-pointer hover:border-green-400 transition-all"
                 >
                   {user.image ? (
                     <Image src={user.image} alt={user.name ?? ""} width={30} height={30} className="rounded-full object-cover" />
                   ) : (
-                    <div className="flex size-7 items-center justify-center rounded-full bg-green-800  text-[13px] font-semibold text-green">
+                    <div className="flex size-7 items-center justify-center rounded-full bg-green-800  text-[13px] font-semibold text-white">
                       {user.name?.[0]?.toUpperCase() ?? "U"}
                     </div>
                   )}
