@@ -24,7 +24,7 @@ const navMap = {
     { icon: Briefcase, href: "/dashboard/freelancer/proposals", label: "My Proposals" },
     { icon: CheckSquare, href: "/dashboard/freelancer/active", label: "Active Projects" },
     { icon: DollarSign, href: "/dashboard/freelancer/earnings", label: "Earnings" },
-    { icon: UserCircle, href: "/dashboard/freelancer/profile", label: "Edit Profile" },
+    { icon: UserCircle, href: "/profile", label: "Edit Profile" },
   ],
   admin: [
     { icon: LayoutGrid, href: "/dashboard/admin", label: "Overview" },
@@ -93,7 +93,7 @@ export default function DashboardSidebar({user}) {
         </div>
       </aside>
 
-      {/* Mobile: HeroUI Drawer — Button as direct child = trigger */}
+      {/*  HeroUI Drawer  */}
       <Drawer>
         <Button
           className="lg:hidden fixed bottom-5 left-5 top-20 z-50 shadow-lg"

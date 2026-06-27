@@ -42,7 +42,7 @@ const FreelancerCard = ({ freelancer }) => {
           </p>
 
           {/* Skills */}
-          <div className="mt-5 flex flex-wrap justify-center gap-2">
+          <div className="mt-5 flex h-7 flex-wrap justify-center gap-2">
             {freelancer.skills?.slice(0, 3).map((skill) => (
               <Chip
                 key={skill}

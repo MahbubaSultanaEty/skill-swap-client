@@ -1,9 +1,17 @@
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+import { serverFetch } from "../core/server";
+
+export const getTasks = async (queryString) => {
+    return serverFetch(`/api/tasks?${queryString}`)
+}
 
 export const getClientTasks = async (clientId) => {
-    // একদম ক্লিন এবং স্ট্যান্ডার্ড নিয়ম
-    const res = await fetch(`${baseUrl}/api/tasks/${clientId}`);
-    return res.json();
+    return serverFetch(`/api/tasks/${clientId}`)
 }
+// export const getClientTasks = async (clientId) => {
+    
+//     const res = await fetch(`${baseUrl}/api/tasks/${clientId}`);
+   
+// }
+
 
 

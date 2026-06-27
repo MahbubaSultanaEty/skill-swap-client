@@ -94,7 +94,7 @@ const PostTaskForm = ({ client }) => {
         <FieldError />
       </TextField>
 
-      {/* CATEGORY (STABLE FIX - NO onSelectionChange BUG) */}
+      
       <TextField>
         <Label>Category</Label>
 
