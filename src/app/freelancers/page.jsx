@@ -11,7 +11,7 @@ export const metadata = {
 
 const FreelancersPage = async () => {
     const freelancers = await getFreelancers();
-    console.log("freelancers", freelancers);
+  
 
   return (
     <section className="bg-white">

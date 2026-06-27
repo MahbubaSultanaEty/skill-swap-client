@@ -8,7 +8,7 @@ import { ArrowRight } from "lucide-react";
 
 const FreelancerCard = ({ freelancer }) => {
   return (
-    <Link href={`/freelancers/${freelancer._id}`} className="group block">
+    <Link href={`/freelancers/${encodeURIComponent(freelancer.email)}`} className="group block">
       <Card className="relative overflow-hidden rounded-3xl border border-green-100 bg-white p-6 transition-all duration-300 hover:-translate-y-2 hover:border-green-300 hover:shadow-2xl">
 
         
