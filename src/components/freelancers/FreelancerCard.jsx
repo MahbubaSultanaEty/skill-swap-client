@@ -11,7 +11,7 @@ const FreelancerCard = ({ freelancer }) => {
     <Link href={`/freelancers/${freelancer._id}`} className="group block">
       <Card className="relative overflow-hidden rounded-3xl border border-green-100 bg-white p-6 transition-all duration-300 hover:-translate-y-2 hover:border-green-300 hover:shadow-2xl">
 
-        {/* Decorative Gradient */}
+        
         <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-r from-green-100 via-emerald-50 to-green-50" />
 
         {/* Content */}
@@ -55,7 +55,7 @@ const FreelancerCard = ({ freelancer }) => {
             ))}
           </div>
 
-          {/* Bottom */}
+         
           <div className="mt-8 flex w-full items-center justify-between border-t border-neutral-100 pt-5">
 
             <div>

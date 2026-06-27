@@ -34,7 +34,7 @@ export default async function BrowseTasksPage({ searchParams }) {
   };
 
     const { tasks, total } = await getTasks(query.toString());
-    console.log("tasks",tasks);
+    // console.log("tasks",tasks);
 
   return (
     <main className="min-h-screen" style={{ background: "#f8faf8" }}>
