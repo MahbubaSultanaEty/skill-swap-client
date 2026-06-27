@@ -5,7 +5,6 @@ export const getTasks = async (queryString) => {
 }
 export const getTaskById = async (id) => {
   const data = await serverFetch(`/api/tasks/currentTask/${id}`);
-  
   return data;
 };
 

@@ -22,7 +22,7 @@ export async function generateMetadata({ params }) {
 export default async function TaskDetailsPage({ params }) {
   const { id } = await params;
     const task = await getTaskById(id);
-    console.log("task",task);
+    // console.log("task",task);
   if (!task) notFound();
 
   return <TaskDetailsClient task={task} />;

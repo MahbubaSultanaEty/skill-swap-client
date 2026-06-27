@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import {
   Users,
@@ -41,6 +41,10 @@ export default function SignupPage() {
     message: "",
   });
 
+  const searchParams = useSearchParams();
+    const redirectTo = searchParams.get("redirect") || "/";
+  console.log(searchParams, "redirect to", redirectTo);
+
     // console.log("role",role)
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -60,10 +64,11 @@ export default function SignupPage() {
    if (data) {
   toast.success(
     "Account created successfully 🎉"
-  );
+     );
+     
 
   setTimeout(() => {
-    router.push("/");
+    router.push(redirectTo)
   }, 1500);
 
   return;
@@ -207,6 +212,7 @@ export default function SignupPage() {
               <TextField name="name">
                 <Label>Full Name</Label>
                 <Input
+                  required
                   name="name"
                   placeholder="Enter your name"
                 />

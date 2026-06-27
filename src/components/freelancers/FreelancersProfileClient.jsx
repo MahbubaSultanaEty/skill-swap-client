@@ -15,7 +15,7 @@ export default function FreelancerProfileClient({ freelancer }) {
   });
 
   return (
-    <main className="min-h-screen py-10 px-4 mt-16" style={{ background: "#f8faf8" }}>
+    <main className="min-h-screen py-10 px-4 " style={{ background: "#f8faf8" }}>
       <div className="max-w-3xl mx-auto flex flex-col gap-6">
 
         {/* Back */}

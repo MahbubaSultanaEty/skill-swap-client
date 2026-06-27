@@ -101,28 +101,7 @@ export default function HowItWorksPage() {
             </div>
           ))}
         </div>
-      </section>
-
-      {/* WHY US */}
-      <section className="border-y px-6 py-16" style={{ background: "#fff", borderColor: "#dcfce7" }}>
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-10 text-center">
-            <h2 className="mb-2 text-4xl font-extrabold tracking-tight" style={{ color: "#14532d" }}>Why SkillSwap?</h2>
-            <p className="text-[15px]" style={{ color: "#6b7280" }}>Built for speed, trust, and results</p>
-          </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            {whyUs.map(({ icon: Icon, title, desc }, i) => (
-              <div key={i} className="group flex flex-col gap-4 rounded-2xl border p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl" style={{ background: "#f8faf8", borderColor: "#dcfce7" }}>
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110" style={{ background: "linear-gradient(135deg, #bbf7d0, #86efac)" }}>
-                  <Icon size={22} color="#15803d" />
-                </div>
-                <div className="text-[17px] font-bold" style={{ color: "#14532d" }}>{title}</div>
-                <div className="text-sm leading-relaxed" style={{ color: "#6b7280" }}>{desc}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      </section>      
 
       {/* FAQ */}
       <section className="mx-auto max-w-2xl px-6 py-20">

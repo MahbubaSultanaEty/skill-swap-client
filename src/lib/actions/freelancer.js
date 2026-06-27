@@ -1,4 +1,7 @@
 "use server"
+
+import { serverFetch } from "../core/server";
+
 export const getFreelancers = async () => {
   try {
     const response = await fetch(
@@ -18,3 +21,8 @@ export const getFreelancers = async () => {
     throw error;
   }
 };
+
+export const getFreelancerByEmail= async(email)=>  {   
+  const data = await serverFetch(`/api/users/email/${email}`); 
+  return data;
+}

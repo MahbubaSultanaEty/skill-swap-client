@@ -38,7 +38,7 @@ export default async function BrowseTasksPage({ searchParams }) {
 
   return (
     <main className="min-h-screen" style={{ background: "#f8faf8" }}>
-      <div className="max-w-7xl mx-auto px-4 py-10 mt-16">
+      <div className="max-w-7xl mx-auto px-4 py-10 ">
         <div className="mb-8">
           <h1 className="text-3xl md:text-4xl font-bold" style={{ color: "#14532d" }}>
             Browse <span style={{ color: "#15803d" }}>Tasks</span>

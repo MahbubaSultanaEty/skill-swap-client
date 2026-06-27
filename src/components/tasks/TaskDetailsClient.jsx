@@ -6,6 +6,7 @@ import { authClient } from "@/lib/auth-client";
 import {
   Calendar, DollarSign, User, Mail, Clock,
   Code2, Palette, PenLine, Megaphone, Wrench, Tag, ArrowLeft,
+  ArrowBigRight,
 } from "lucide-react";
 
 const STATUS_COLOR = {
@@ -26,9 +27,9 @@ export default function TaskDetailsClient({ task }) {
   const router = useRouter();
   const { data: session } = authClient.useSession();
 
-  const isFreelancer = session?.user?.role === "freelancer";
+  
   const isOpen = task.status === "open";
-  const canPropose = isFreelancer && isOpen;
+  const canPropose = isOpen;
 
   const statusStyle = STATUS_COLOR[task.status] || STATUS_COLOR["open"];
   const CategoryIcon = CATEGORY_ICON[task.category] || Tag;
@@ -140,9 +141,7 @@ export default function TaskDetailsClient({ task }) {
               Interested in this task?
             </p>
             <p className="text-sm text-gray-400 mt-0.5">
-              {!isFreelancer
-                ? "Only freelancers can submit proposals"
-                : !isOpen
+              {!isOpen
                 ? `Task is ${task.status} — no longer accepting proposals`
                 : "Submit your proposal and get hired"}
             </p>
@@ -153,7 +152,7 @@ export default function TaskDetailsClient({ task }) {
             onPress={() => router.push(`/tasks/${task._id}/proposal`)}
             style={canPropose ? { background: "#15803d", color: "#fff" } : {}}
           >
-            Submit Proposal
+          <ArrowBigRight />  Proposal 
           </Button>
         </div>
 

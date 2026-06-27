@@ -236,7 +236,7 @@ export default function LoginForm() {
             <p className="mt-6 text-center text-sm text-gray-500">
               Don't have an account?{" "}
               <Link
-                href="/auth/signup"
+                href={`/auth/signup?redirect=${redirectTo}`}
                 className="font-medium text-[#166534]"
               >
                 Sign Up
