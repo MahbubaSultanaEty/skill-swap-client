@@ -71,7 +71,7 @@ export default function WhyChooseSkillSwap() {
                   delay: index * 0.1,
                 }}
                 viewport={{ once: true }}
-                className="group rounded-3xl border border-green-100 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-green-300 hover:shadow-xl"
+                className="group rounded-3xl border border-[#92400e]/30 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-[#92400e]/100 hover:shadow-xl"
               >
                 <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-green-100 text-[#166534] transition group-hover:bg-[#166534] group-hover:text-white">
                   <Icon size={28} />

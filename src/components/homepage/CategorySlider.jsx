@@ -22,7 +22,7 @@ export default function CategorySlider() {
         .cat-inner { max-width: 1280px; margin: 0 auto; }
         .cat-header { margin-bottom: 40px; }
         .cat-tag { display: inline-flex; align-items: center; gap: 6px; background: #dcfce7; color: #15803d; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 12px; }
-        .cat-title { font-size: 36px; font-weight: 700; color: #14532d; letter-spacing: -0.8px; line-height: 1.2; margin: 0 0 10px; }
+        .cat-title { font-size: 36px; font-weight: 700; color: #1a1919; letter-spacing: -0.8px; line-height: 1.2; margin: 0 0 10px; }
         .cat-subtitle { font-size: 15px; color: #6b7280; margin: 0; }
 
         .cat-card { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; border-radius: 20px; padding: 36px 20px; text-decoration: none; position: relative; overflow: hidden; border: 1.5px solid #dcfce7; background: #fff; transition: transform 0.3s cubic-bezier(.34,1.56,.64,1), box-shadow 0.3s ease, border-color 0.3s ease; cursor: pointer; }
@@ -67,7 +67,7 @@ export default function CategorySlider() {
               <SwiperSlide key={name}>
                 <Link href={href} className="cat-card">
                   <div className="cat-icon-wrap" style={{ background: gradient }}>
-                    <Icon size={28} color="#15803d" />
+                    <Icon size={28} color="#0f172a" />
                   </div>
                   <div style={{ textAlign: "center" }}>
                     <div className="cat-name">{name}</div>

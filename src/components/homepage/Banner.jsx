@@ -12,7 +12,7 @@ export const Banner = () => {
   <div className="mx-auto grid min-h-[80vh] max-w-7xl items-center gap-12 px-4 py-16 lg:grid-cols-2">
     {/* Left Content */}
     <div>
-      <span className="inline-flex items-center rounded-full border gap-2 border-green-200 bg-green-50 px-4 py-2 text-sm font-medium text-[#166534]">
+      <span className="inline-flex items-center rounded-full border gap-2 border-green-200 bg-green-50 px-4 py-2 text-sm font-medium text-[#0f172a]">
         <Layers3Diagonal /> Freelance Micro-Task Marketplace
       </span>
 

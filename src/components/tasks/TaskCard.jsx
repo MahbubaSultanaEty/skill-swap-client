@@ -47,7 +47,7 @@ export default function TaskCard({ task }) {
         <Card.Content className="flex flex-col gap-2 px-5 py-3">
           <h2
             className="font-semibold text-base leading-snug line-clamp-1"
-            style={{ color: "#14532d" }}
+            style={{ color: "#1a1919" }}
           >
             {task.title}
           </h2>

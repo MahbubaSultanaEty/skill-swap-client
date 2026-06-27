@@ -42,7 +42,7 @@ export default function TaskDetailsClient({ task }) {
   });
 
   return (
-    <main className="min-h-screen py-10 px-4 mt-16" style={{ background: "#f8faf8" }}>
+    <main className="min-h-screen py-10 px-4 " style={{ background: "#f8faf8" }}>
       <div className="max-w-4xl mx-auto flex flex-col gap-6">
 
         {/* Back */}
@@ -67,7 +67,7 @@ export default function TaskDetailsClient({ task }) {
               </div>
               <div>
                 <p className="text-xs text-gray-400">{task.category}</p>
-                <h1 className="text-xl font-bold" style={{ color: "#14532d" }}>
+                <h1 className="text-xl font-bold" style={{ color: "#0f172a" }}>
                   {task.title}
                 </h1>
               </div>
@@ -103,7 +103,7 @@ export default function TaskDetailsClient({ task }) {
         </div>
 
         {/* Client Info */}
-        <div className="rounded-2xl border border-green-100 p-6" style={{ background: "#fff" }}>
+        <div className="rounded-2xl border border-green-100 p-6" style={{ background: "#f8fafc" }}>
           <h2 className="font-semibold mb-4" style={{ color: "#14532d" }}>Client Info</h2>
           <div className="flex items-center gap-4">
             {task.clientImage ? (
@@ -121,7 +121,7 @@ export default function TaskDetailsClient({ task }) {
               </div>
             )}
             <div className="flex flex-col gap-1">
-              <span className="flex items-center gap-1.5 text-sm font-medium" style={{ color: "#14532d" }}>
+              <span className="flex items-center gap-1.5 text-sm font-medium" style={{ color: "#92400e" }}>
                 <User size={14} /> {task.clientName}
               </span>
               <span className="flex items-center gap-1.5 text-xs text-gray-400">

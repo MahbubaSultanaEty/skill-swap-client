@@ -16,7 +16,8 @@ export default function TaskProposalForm({
   clientEmail,
   freelancerId,
   freelancerName,
-  freelancerEmail,
+    freelancerEmail,
+  clientId
 }) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -41,7 +42,8 @@ export default function TaskProposalForm({
       await submitProposal({
         taskId,
         taskTitle,
-        clientName,
+          clientName,
+        clientId,
         clientEmail,
         freelancerId,
         freelancerName,
@@ -53,7 +55,7 @@ export default function TaskProposalForm({
         submittedAt: new Date().toISOString(),
       });
       toast.success("Proposal submitted successfully!");
-      router.push("/dashboard/freelancer/proposals");
+    //   router.push("/dashboard/freelancer/proposals");
     } catch (err) {
       toast.error(err.message || "Failed to submit proposal");
     } finally {

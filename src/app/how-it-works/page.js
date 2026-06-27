@@ -58,7 +58,7 @@ export default function HowItWorksPage() {
         <div className="inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-widest mb-5" style={{ background: "#dcfce7", color: "#15803d" }}>
           ✦ How It Works
         </div>
-        <h1 className="mx-auto mb-4 max-w-2xl text-5xl font-extrabold leading-tight tracking-tight" style={{ color: "#14532d" }}>
+        <h1 className="mx-auto mb-4 max-w-2xl text-5xl font-extrabold leading-tight tracking-tight" style={{ color: "#1a1919" }}>
           Get things done in{" "}
           <span style={{ color: "#15803d" }}>3 simple steps</span>
         </h1>
@@ -83,7 +83,7 @@ export default function HowItWorksPage() {
               {/* bg circle decoration */}
               <div className="absolute -bottom-10 -right-10 h-32 w-32 rounded-full transition-transform duration-500 group-hover:scale-150" style={{ background: "#f0fdf4" }} />
               <div className="relative z-10">
-                <div className="mb-4 text-7xl font-black leading-none" style={{ color: "#dcfce7" }}>{number}</div>
+                <div className="mb-4 text-7xl font-black leading-none" style={{ color: "#a6b2bf" }}>{number}</div>
                 <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl transition-transform duration-300 group-hover:rotate-[-5deg] group-hover:scale-110" style={{ background: bg }}>
                   <Icon size={26} color="#15803d" />
                 </div>
@@ -106,7 +106,7 @@ export default function HowItWorksPage() {
       {/* FAQ */}
       <section className="mx-auto max-w-2xl px-6 py-20">
         <div className="mb-12 text-center">
-          <h2 className="mb-2 text-4xl font-extrabold tracking-tight" style={{ color: "#14532d" }}>Frequently Asked Questions</h2>
+          <h2 className="mb-2 text-4xl font-extrabold tracking-tight" style={{ color: "#1a1919" }}>Frequently Asked Questions</h2>
           <p className="text-[15px]" style={{ color: "#6b7280" }}>Everything you need to know before getting started</p>
         </div>
         <div className="space-y-3">
