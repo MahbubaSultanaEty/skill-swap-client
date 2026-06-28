@@ -24,7 +24,12 @@ export const auth = betterAuth({
       type: "string",
       required: false,
       defaultValue: "freelancer",
-    },
+      },
+      plan: {
+  type: "string",
+  required: false,
+  defaultValue: "freelancer_basic"
+}
   },
 },
 });

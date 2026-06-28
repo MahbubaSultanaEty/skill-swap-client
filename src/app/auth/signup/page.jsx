@@ -52,7 +52,9 @@ export default function SignupPage() {
     const formData = new FormData(e.currentTarget);
 
     const user = Object.fromEntries(formData.entries());
-;
+
+    const plan = role === "freelancer"? "freelancer_basic" : ""
+
     const { data, error } = await authClient.signUp.email({
       name: user.name,
       email: user.email,

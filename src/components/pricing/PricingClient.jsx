@@ -35,16 +35,24 @@ function PlanCard({ plan }) {
             background: plan.popular ? "rgba(255,255,255,0.15)" : "#f3f4f6",
           }}
         >
-          <Icon size={20} style={{ color: plan.popular ? "#fff" : "#15803d" }} />
+          <Icon
+            size={20}
+            style={{ color: plan.popular ? "#fff" : "#15803d" }}
+          />
         </div>
         <div>
           <h3
             className="font-bold text-lg"
             style={{ color: plan.popular ? "#fff" : "#111827" }}
           >
-            {plan.name} 
+            {plan.name}
           </h3>
-          <p style={{ color: plan.popular ? "rgba(255,255,255,0.6)" : "#9ca3af" }} className="text-xs">
+          <p
+            style={{
+              color: plan.popular ? "rgba(255,255,255,0.6)" : "#9ca3af",
+            }}
+            className="text-xs"
+          >
             {plan.description}
           </p>
         </div>
@@ -60,7 +68,9 @@ function PlanCard({ plan }) {
         {plan.price > 0 && (
           <span
             className="text-sm mb-1"
-            style={{ color: plan.popular ? "rgba(255,255,255,0.5)" : "#9ca3af" }}
+            style={{
+              color: plan.popular ? "rgba(255,255,255,0.5)" : "#9ca3af",
+            }}
           >
             /{plan.period}
           </span>
@@ -69,16 +79,38 @@ function PlanCard({ plan }) {
 
       <ul className="flex flex-col gap-2 flex-1">
         {plan.features.map((feature) => (
-          <li key={feature} className="flex items-center gap-2 text-sm"
-            style={{ color: plan.popular ? "rgba(255,255,255,0.8)" : "#374151" }}
+          <li
+            key={feature}
+            className="flex items-center gap-2 text-sm"
+            style={{
+              color: plan.popular ? "rgba(255,255,255,0.8)" : "#374151",
+            }}
           >
-            <Check size={14} style={{ color: plan.popular ? "#86efac" : "#15803d" }} />
+            <Check
+              size={14}
+              style={{ color: plan.popular ? "#86efac" : "#15803d" }}
+            />
             {feature}
           </li>
         ))}
       </ul>
 
-      <button
+      <form action="/api/checkout_sessions" method="POST">
+        <input type="hidden" name="plan_id" value={plan.id} />
+        <section>
+          <button type="submit" role="link"
+              className="w-full py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 hover:scale-110"
+        style={
+          plan.popular
+            ? { background: "#fff", color: "#14532d" }
+            : { background: "#0f172a", color: "#f8faf8" }
+        }
+          >
+            {plan.cta}
+          </button>
+        </section>
+      </form>
+      {/* <button
         type="submit"
         role="link"
         className="w-full py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 hover:scale-110"
@@ -89,7 +121,7 @@ function PlanCard({ plan }) {
         }
       >
         {plan.cta}
-      </button>
+      </button> */}
     </div>
   );
 }
@@ -102,7 +134,6 @@ export default function PricingClient({ role, clientPlans, freelancerPlans }) {
   return (
     <main className="min-h-screen py-16 px-4" style={{ background: "#f9fafb" }}>
       <div className="max-w-5xl mx-auto flex flex-col items-center gap-10">
-
         {/* Header */}
         <div className="text-center">
           <h1 className="text-4xl font-black" style={{ color: "#111827" }}>
@@ -114,7 +145,7 @@ export default function PricingClient({ role, clientPlans, freelancerPlans }) {
           </p>
         </div>
 
-        {/* Tab */}
+        {/* Tab
         {!role && (
           <div
             className="flex items-center gap-1 p-1 rounded-2xl border"
@@ -145,13 +176,17 @@ export default function PricingClient({ role, clientPlans, freelancerPlans }) {
               For Clients
             </button>
           </div>
-        )}
+        )} */}
 
         {/* Role label */}
         {role && (
           <div
             className="text-sm font-medium px-4 py-2 rounded-full border"
-            style={{ background: "#fff", borderColor: "#e5e7eb", color: "#374151" }}
+            style={{
+              background: "#fff",
+              borderColor: "#e5e7eb",
+              color: "#374151",
+            }}
           >
             Showing{" "}
             <span style={{ color: "#15803d" }} className="font-bold">
@@ -171,7 +206,6 @@ export default function PricingClient({ role, clientPlans, freelancerPlans }) {
         <p className="text-sm text-center" style={{ color: "#9ca3af" }}>
           All plans include a 14-day free trial. No credit card required.
         </p>
-
       </div>
     </main>
   );

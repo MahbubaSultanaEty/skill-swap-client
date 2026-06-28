@@ -38,6 +38,7 @@ const clientPlans = [
 const freelancerPlans = [
   {
     name: "Basic",
+    id: "freelancer_basic",
     price: 0,
     period: "month",
     description: "Start your freelance journey with essential tools",
@@ -48,6 +49,7 @@ const freelancerPlans = [
   },
   {
     name: "Growth",
+    id: "freelancer_growth",
     price: 14,
     period: "month",
     description: "Boost your visibility and win more projects",
@@ -58,12 +60,13 @@ const freelancerPlans = [
   },
   {
     name: "Elite",
+    id: "freelancer_elite",
     price: 39,
     period: "month",
     description: "For top freelancers who want maximum exposure",
     icon: "Gem",
     popular: false,
-    features: ["Unlimited proposals", "Elite profile badge", "Top search placement", "Advanced earnings analytics", "Featured freelancer listing", "Portfolio showcase"],
+    features: ["100 proposals", "Elite profile badge", "Top search placement", "Advanced earnings analytics", "Featured freelancer listing", "Portfolio showcase"],
     cta: "Go Elite",
   },
 ];
