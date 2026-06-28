@@ -48,8 +48,8 @@ export default async function ProposalPage({ params }) {
 
           {/* LEFT: Task Details */}
           <div className="lg:col-span-2">
-            <div className="sticky top-20 rounded-2xl border p-6" style={{ background: "#fff", borderColor: "#dcfce7" }}>
-              <div className="mb-4 inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold" style={{ background: "#dcfce7", color: "#15803d" }}>
+            <div className="sticky top-20 rounded-2xl border shadow shadow-[#92400e40] p-6" style={{ background: "#fff",  }}>
+              <div className="mb-4 inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold" style={{ background: "#dcfce7", color: "#92400e" }}>
                 <Tag size={11} /> {task?.category}
               </div>
               <h2 className="mb-3 text-lg font-bold leading-snug" style={{ color: "#14532d" }}>
@@ -114,7 +114,7 @@ export default async function ProposalPage({ params }) {
                 <div className="mx-auto mb-4 flex size-14 items-center justify-center rounded-full" style={{ background: "#fef2f2" }}>
                   <AlertTriangle size={26} color="#ef4444" />
                 </div>
-                <h3 className="mb-2 text-lg font-bold" style={{ color: "#92400e" }}>
+                <h3 className="mb-2 text-lg font-bold" style={{ color: "#FFBD58" }}>
                   Proposal Limit Reached
                 </h3>
                 <p className="mb-6 text-sm leading-relaxed" style={{ color: "#6b7280" }}>

@@ -33,7 +33,7 @@ export default function CategorySlider() {
         .cat-icon-wrap { width: 64px; height: 64px; border-radius: 16px; display: flex; align-items: center; justify-content: center; transition: transform 0.3s cubic-bezier(.34,1.56,.64,1); }
         .cat-card:hover .cat-icon-wrap { transform: scale(1.15) rotate(-5deg); }
 
-        .cat-name { font-size: 16px; font-weight: 700; color: #14532d; }
+        .cat-name { font-size: 16px; font-weight: 700; color: #92400e; }
         .cat-count { font-size: 12px; color: #6b7280; }
         .cat-arrow { font-size: 18px; color: #15803d; opacity: 0; transform: translateX(-6px); transition: all 0.25s ease; }
         .cat-card:hover .cat-arrow { opacity: 1; transform: translateX(0); }
@@ -67,7 +67,7 @@ export default function CategorySlider() {
               <SwiperSlide key={name}>
                 <Link href={href} className="cat-card">
                   <div className="cat-icon-wrap" style={{ background: gradient }}>
-                    <Icon size={28} color="#0f172a" />
+                    <Icon size={28} color="#14532d" />
                   </div>
                   <div style={{ textAlign: "center" }}>
                     <div className="cat-name">{name}</div>

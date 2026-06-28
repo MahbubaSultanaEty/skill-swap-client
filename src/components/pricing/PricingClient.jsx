@@ -42,7 +42,7 @@ function PlanCard({ plan }) {
             className="font-bold text-lg"
             style={{ color: plan.popular ? "#fff" : "#111827" }}
           >
-            {plan.name}
+            {plan.name} 
           </h3>
           <p style={{ color: plan.popular ? "rgba(255,255,255,0.6)" : "#9ca3af" }} className="text-xs">
             {plan.description}
@@ -79,11 +79,13 @@ function PlanCard({ plan }) {
       </ul>
 
       <button
-        className="w-full py-2.5 rounded-xl text-sm font-semibold transition-all duration-200"
+        type="submit"
+        role="link"
+        className="w-full py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 hover:scale-110"
         style={
           plan.popular
             ? { background: "#fff", color: "#14532d" }
-            : { background: "#f3f4f6", color: "#374151" }
+            : { background: "#0f172a", color: "#f8faf8" }
         }
       >
         {plan.cta}

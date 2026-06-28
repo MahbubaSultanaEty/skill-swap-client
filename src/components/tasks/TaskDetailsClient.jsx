@@ -81,9 +81,9 @@ export default function TaskDetailsClient({ task }) {
           </div>
 
           <div className="flex flex-wrap gap-5 mt-5 text-sm text-gray-500">
-            <span className="flex items-center gap-1.5">
-              <DollarSign size={14} style={{ color: "#15803d" }} />
-              <span className="font-semibold" style={{ color: "#15803d" }}>${task.budget}</span>
+            <span className="flex items-center gap-1">
+              <DollarSign size={14} style={{ color: "#92400e" }} />
+              <span className="font-semibold" style={{ color: "#92400e" }}>{task.budget}</span>
             </span>
             <span className="flex items-center gap-1.5">
               <Calendar size={14} /> Deadline: {deadline}
@@ -137,7 +137,7 @@ export default function TaskDetailsClient({ task }) {
           style={{ background: "#fff" }}
         >
           <div>
-            <p className="font-semibold" style={{ color: "#14532d" }}>
+            <p className="font-semibold" style={{ color: "#0f172a" }}>
               Interested in this task?
             </p>
             <p className="text-sm text-gray-400 mt-0.5">

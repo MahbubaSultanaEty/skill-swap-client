@@ -46,8 +46,8 @@ export default function Testimonials() {
           </p>
         </div>
 
-        {/* Testimonials Grid Layout */}
-        {/* md:grid-cols-3 নিশ্চিত করবে বড় স্ক্রিনে পাশাপাশি ৩টা কার্ড থাকবে এবং ছোট স্ক্রিনে কলামে ১টা করে দেখাবে */}
+        {/* Testimonials Grid  */}
+        
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {reviews.map((review) => (
             <div 
@@ -62,7 +62,7 @@ export default function Testimonials() {
                       key={i} 
                       size={16} 
                       strokeWidth={2}
-                      // রেটিং অনুযায়ী স্টার কালার পরিবর্তন (গ্রিন অ্যাকসেন্ট)
+                     
                       color={i < review.rating ? "#22c55e" : "#e2e8f0"} 
                       className={i < review.rating ? "fill-[#22c55e]" : "fill-transparent"}
                     />
@@ -86,7 +86,7 @@ export default function Testimonials() {
                   />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-[#0f1a0f] group-hover:text-[#15803d] transition-colors">
+                  <h4 className="text-sm font-bold text-[#0f1a0f] group-hover:text-[#92400e] transition-colors">
                     {review.name}
                   </h4>
                   <p className="text-xs text-gray-500 font-medium">

@@ -47,7 +47,7 @@ export const Banner = () => {
       {/* Stats */}
       <div className="mt-10 grid max-w-xl grid-cols-3 gap-4">
         <div>
-          <h3 className="text-2xl font-bold text-[#166534]">
+          <h3 className="text-2xl font-bold text-[#92400e]">
             1200+
           </h3>
           <p className="text-sm text-gray-600">
@@ -56,7 +56,7 @@ export const Banner = () => {
         </div>
 
         <div>
-          <h3 className="text-2xl font-bold text-[#166534]">
+          <h3 className="text-2xl font-bold text-[#92400e]">
             450+
           </h3>
           <p className="text-sm text-gray-600">
@@ -65,7 +65,7 @@ export const Banner = () => {
         </div>
 
         <div>
-          <h3 className="text-2xl font-bold text-[#166534]">
+          <h3 className="text-2xl font-bold text-[#92400e]">
             98%
           </h3>
           <p className="text-sm text-gray-600">
@@ -95,7 +95,7 @@ export const Banner = () => {
               Active Tasks
             </p>
 
-            <h4 className="mt-2 text-2xl font-bold text-[#166534]">
+            <h4 className="mt-2 text-2xl font-bold text-[#92400e]">
               24
             </h4>
           </div>
@@ -105,7 +105,7 @@ export const Banner = () => {
               Open Jobs
             </p>
 
-            <h4 className="mt-2 text-2xl font-bold text-[#166534]">
+            <h4 className="mt-2 text-2xl font-bold text-[#92400e]">
               12
             </h4>
           </div>
@@ -115,7 +115,7 @@ export const Banner = () => {
               Total Spent
             </p>
 
-            <h4 className="mt-2 text-2xl font-bold text-[#166534]">
+            <h4 className="mt-2 text-2xl font-bold text-[#92400e]">
               $4.5k
             </h4>
           </div>

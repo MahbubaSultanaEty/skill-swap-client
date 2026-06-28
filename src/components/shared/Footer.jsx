@@ -7,6 +7,7 @@ import {
   Mail,
 } from "lucide-react";
 import { LogoGithub, LogoLinkedin } from "@gravity-ui/icons";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
   const quickLinks = [
@@ -38,6 +39,11 @@ export default function Footer() {
       href: "/login",
     },
   ];
+
+   const pathname = usePathname()
+  if(pathname.includes('dashboard') || pathname.includes('auth')){
+    return null;
+  }
 
   return (
     <footer className="mt-20 border-t-4 border-[#22c55e] bg-[#205c37] text-white">
