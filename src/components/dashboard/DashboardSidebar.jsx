@@ -9,6 +9,7 @@ import {
   Users, CheckSquare, CreditCard,
   Briefcase, DollarSign, UserCircle, Menu,
   CircleArrowDown,
+  Search,
 } from "lucide-react";
 import { SlDrawer } from "react-icons/sl";
 
@@ -21,6 +22,7 @@ const navMap = {
   ],
   freelancer: [
     { icon: LayoutGrid, href: "/dashboard/freelancer", label: "Overview" },
+    { icon: Search, href: "/dashboard/freelancer/tasks", label: "Tasks" },
     { icon: Briefcase, href: "/dashboard/freelancer/proposals", label: "My Proposals" },
     { icon: CheckSquare, href: "/dashboard/freelancer/active", label: "Active Projects" },
     { icon: DollarSign, href: "/dashboard/freelancer/earnings", label: "Earnings" },
