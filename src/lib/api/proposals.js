@@ -7,3 +7,4 @@ export const getProposalsByClientId = async (clientId) => {
 export const getProposalsByFreelancerEmail = async (freelancerEmail) => {
     return serverFetch(`/api/proposals?freelancerEmail=${freelancerEmail}`)
 }
+

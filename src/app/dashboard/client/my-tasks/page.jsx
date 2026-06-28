@@ -41,7 +41,7 @@ export default async function MyTasksPage() {
   return (
     <div className="max-w-7xl mx-auto px-6 py-10 bg-neutral-50/50 min-h-screen">
       
-      {/* হেডার সেকশন */}
+      
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-10 pb-6 border-b border-neutral-200">
         <div>
           <h1 className="text-3xl font-extrabold tracking-tight text-green-900">Task Management</h1>
@@ -57,15 +57,15 @@ export default async function MyTasksPage() {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
         <div className="bg-white p-6 rounded-2xl border border-neutral-100 shadow-sm">
           <p className="text-xs font-medium text-neutral-400 uppercase tracking-wider">Total Posted</p>
-          <p className="text-2xl font-bold text-neutral-900 mt-2">{totalTasks} Tasks</p>
+          <p className="text-2xl font-bold text-[#92400e] mt-2">{totalTasks} Tasks</p>
         </div>
         <div className="bg-white p-6 rounded-2xl border border-neutral-100 shadow-sm">
           <p className="text-xs font-medium text-neutral-400 uppercase tracking-wider">Active Progress</p>
-          <p className="text-2xl font-bold text-neutral-900 mt-2">{inProgressTasks} Running</p>
+          <p className="text-2xl font-bold text-[#92400e] mt-2">{inProgressTasks} Running</p>
         </div>
         <div className="bg-white p-6 rounded-2xl border border-neutral-100 shadow-sm">
           <p className="text-xs font-medium text-neutral-400 uppercase tracking-wider">Total Investment</p>
-          <p className="text-2xl font-bold text-neutral-900 mt-2">${totalBudget}</p>
+          <p className="text-2xl font-bold text-[#92400e] mt-2">${totalBudget}</p>
         </div>
       </div>
 
