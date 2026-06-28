@@ -6,6 +6,7 @@ import TaskProposalForm from '@/components/tasks/TaskProposalForm';
 import { getProposalsByFreelancerEmail } from '@/lib/api/proposals';
 import Link from 'next/link';
 import { Label, ProgressBar } from '@heroui/react';
+import { getPlanId } from '@/lib/api/plans';
 
 export default async function ProposalPage({ params }) {
   const { id } = await params;
@@ -17,10 +18,8 @@ export default async function ProposalPage({ params }) {
 
   const proposals = await getProposalsByFreelancerEmail(user.email);
 
-  const plan = {
-    name: "Free",
-    maxProposalsPerMonth: 3,
-  };
+  const plan= await getPlanId(user?.plan || "seeker_free")
+  
 
   const usedCount = proposals?.length || 0;
   const limitReached = usedCount >= plan.maxProposalsPerMonth;
@@ -131,7 +130,7 @@ export default async function ProposalPage({ params }) {
             ) : (
               /* Proposal Form */
               <div className="rounded-2xl border p-6" style={{ background: "#fff", borderColor: "#dcfce7" }}>
-                <h3 className="mb-5 text-lg font-bold" style={{ color: "#14532d" }}>Your Proposal</h3>
+                <h3 className="mb-5 text-lg font-bold" style={{ color: "#0f172a" }}>Your Proposal</h3>
                 <TaskProposalForm
                   taskId={task?._id?.toString() || id}
                   taskTitle={task?.title}

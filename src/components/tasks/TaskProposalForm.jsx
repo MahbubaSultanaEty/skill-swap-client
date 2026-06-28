@@ -68,7 +68,7 @@ export default function TaskProposalForm({
 
       {/* Proposed Budget */}
       <div className="space-y-1.5">
-        <label className="flex items-center gap-1.5 text-sm font-semibold" style={{ color: "#14532d" }}>
+        <label className="flex items-center gap-1.5 text-sm font-semibold" style={{ color: "#92400e" }}>
           <DollarSign size={14} /> Proposed Budget (USD)
         </label>
         <input
@@ -86,7 +86,7 @@ export default function TaskProposalForm({
 
       {/* Estimated Days */}
       <div className="space-y-1.5">
-        <label className="flex items-center gap-1.5 text-sm font-semibold" style={{ color: "#14532d" }}>
+        <label className="flex items-center gap-1.5 text-sm font-semibold" style={{ color: "#92400e" }}>
           <Clock size={14} /> Estimated Days to Complete
         </label>
         <input
@@ -104,7 +104,7 @@ export default function TaskProposalForm({
 
       {/* Cover Note */}
       <div className="space-y-1.5">
-        <label className="flex items-center gap-1.5 text-sm font-semibold" style={{ color: "#14532d" }}>
+        <label className="flex items-center gap-1.5 text-sm font-semibold" style={{ color: "#92400e" }}>
           <FileText size={14} /> Cover Note
         </label>
         <textarea
