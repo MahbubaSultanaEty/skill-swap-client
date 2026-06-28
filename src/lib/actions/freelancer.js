@@ -22,7 +22,7 @@ export const getFreelancers = async () => {
   }
 };
 
-export const getFreelancerByEmail= async(email)=>  {   
+export const getUserByEmail= async(email)=>  {   
   const data = await serverFetch(`/api/users/email/${email}`); 
   return data;
 }

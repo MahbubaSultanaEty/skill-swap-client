@@ -1,5 +1,5 @@
 import EditProfileModal from "@/components/profile/EditProfileModal";
-import { getFreelancerByEmail } from "@/lib/actions/freelancer";
+import { getUserByEmail } from "@/lib/actions/freelancer";
 import { getUserSession } from "@/lib/core/session";
 import { Avatar, Card, Chip } from "@heroui/react";
 
@@ -13,7 +13,7 @@ export default async function ProfilePage() {
   const session = await getUserSession();
 
   
-  const userData = await getFreelancerByEmail(session.email);
+  const userData = await getUserByEmail(session.email);
   // console.log(userData);
 
   const cleanDate = new Date(userData.createdAt).toLocaleDateString("en-US", {

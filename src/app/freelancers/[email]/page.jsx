@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
-import FreelancerProfileClient from "@/components/freelancers/FreelancersProfileClient";
-import { getFreelancerByEmail } from "@/lib/actions/freelancer";
+import { getUserByEmail } from "@/lib/actions/freelancer";
 
 
 
@@ -24,7 +23,7 @@ export default async function FreelancerProfilePage({ params }) {
     const { email } = await params;
   //   console.log("raw email:", email);
   // console.log("decoded email:", decodeURIComponent(email));
-    const freelancer = await getFreelancerByEmail(decodeURIComponent(email));
+    const freelancer = await getUserByEmail(decodeURIComponent(email));
     // console.log(freelancer);
   if (!freelancer) notFound();
 

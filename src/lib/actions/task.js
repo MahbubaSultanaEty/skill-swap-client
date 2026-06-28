@@ -1,9 +1,10 @@
 "use server"
 
-import { serverMutaion } from "../core/server"
+import { serverMutation } from "../core/server";
+
 
 export const createTask = async (newTaskData) => {
-     return await serverMutaion(`/api/tasks`, newTaskData);
+     return await serverMutation(`/api/tasks`, newTaskData);
    
 }
 
