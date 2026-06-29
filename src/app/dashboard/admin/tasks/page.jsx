@@ -1,12 +1,13 @@
-import { serverFetch } from "@/lib/core/server";
+import { protectedFetch, serverFetch } from "@/lib/core/server";
 import ManageTasksTable from "./ManageTaskTable";
 
 export default async function Page({ searchParams }) {
-  const page = Number(searchParams?.page) || 1;
-  const perPage = Number(searchParams?.perPage) || 1000;
+  const searchParam = await searchParams;
+  const page = Number(searchParam?.page) || 1;
+  const perPage = Number(searchParam?.perPage) || 1000;
 
  const getTasks = async (params = {}) => {
-  return serverFetch(
+  return protectedFetch(
     `/api/tasks?page=${params.page || 1}&perPage=${params.perPage || 1000}`
   );
 };

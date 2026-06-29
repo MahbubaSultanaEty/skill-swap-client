@@ -111,7 +111,7 @@ const getProposalForTask = (taskId) =>
               <Table.Body>
                 {tasks.length > 0 ? (
                   tasks.map((task) => (
-                    <Table.Row key={task._id} className="hover:bg-neutral-50/50 transition-colors">
+                    <Table.Row key={task?._id} className="hover:bg-neutral-50/50 transition-colors">
                       <Table.Cell isRowHeader>
                         <div className="flex flex-col">
                           <span className="font-semibold text-green-950 text-base">{task.title}</span>

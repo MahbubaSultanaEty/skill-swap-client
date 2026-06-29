@@ -1,9 +1,9 @@
 import { getUserSession } from "@/lib/core/session";
 import FreelancerOverviewClient from "./FreelancerOverviewClient";
-import { serverFetch } from "@/lib/core/server";
+import { protectedFetch, serverFetch } from "@/lib/core/server";
 
 async function getProposals(email) {
-  const data = await serverFetch(`/api/proposals?freelancerEmail=${email}`);
+  const data = await protectedFetch(`/api/proposals?freelancerEmail=${email}`);
   return data || [];
 }
 

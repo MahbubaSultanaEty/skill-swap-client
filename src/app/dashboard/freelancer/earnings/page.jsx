@@ -1,9 +1,9 @@
-import { serverFetch } from "@/lib/core/server";
+import { protectedFetch, serverFetch } from "@/lib/core/server";
 import { getUserSession } from "@/lib/core/session";
 import { Table, Chip } from "@heroui/react";
 
 async function getCompletedProposals(email) {
-  const data = await serverFetch(`/api/proposals?freelancerEmail=${email}`);
+  const data = await protectedFetch(`/api/proposals?freelancerEmail=${email}`);
   const proposals = data || [];
   return proposals.filter((p) => p.status === "Completed");
 }
