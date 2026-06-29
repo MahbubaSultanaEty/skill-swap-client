@@ -1,11 +1,36 @@
-import { getUserSession } from '@/lib/core/session'
-import React from 'react'
+import { getUserSession } from "@/lib/core/session";
+import { getClientTasks } from "@/lib/api/task";
+import ClientDashboardHomePage from "./ClientDashboardHomepage";
 
-const ClientDashboardHomepage =async () => {
-    const user = await getUserSession()
+export const metadata = {
+  title: "Overview | Client Dashboard",
+};
+
+export default async function ClientOverviewPage() {
+  const user = await getUserSession();
+  const tasks = await getClientTasks(user?.id);
+
+  const total = tasks.length;
+  const open = tasks.filter((t) => t.status === "open").length;
+  const inProgress = tasks.filter((t) => t.status === "In Progress").length;
+  const completed = tasks.filter((t) => t.status === "Completed").length;
+  const totalSpent = tasks
+    .filter((t) => t.status === "Completed" || t.status === "In Progress")
+    .reduce((sum, t) => sum + Number(t.budget || 0), 0);
+
+  const stats = { total, open, inProgress, completed, totalSpent };
+
   return (
-    <div>ClientDashboardHomepage</div>
-  )
+    <div className="p-6 flex flex-col gap-6">
+      <div>
+        <h1 className="text-2xl font-bold" style={{ color: "#0f172a" }}>
+          Overview
+        </h1>
+        <p className="text-sm text-gray-400 mt-1">
+          Your task activity at a glance
+        </p>
+      </div>
+      <ClientDashboardHomePage stats={stats} name={user?.name} />
+    </div>
+  );
 }
-
-export default ClientDashboardHomepage
