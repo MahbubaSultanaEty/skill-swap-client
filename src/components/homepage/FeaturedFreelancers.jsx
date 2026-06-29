@@ -21,7 +21,8 @@ export default async function FeaturedFreelancers() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {featuredFreelancers.map((freelancer) => (
               <FreelancerCard
-                  freelancer={freelancer}
+              freelancer={freelancer}
+              key={freelancer._id}
             />
           ))}
         </div>

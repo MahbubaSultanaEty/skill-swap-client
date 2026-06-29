@@ -14,6 +14,7 @@ import {
   Input,
   Label,
   TextField,
+  Toast,
 } from "@heroui/react";
 
 
@@ -21,6 +22,7 @@ import { authClient } from "@/lib/auth-client";
 import GoogleSignInButton from "./GoogleSignInBtn";
 import { toast } from "react-toastify";
 import { toast as sonnerToast } from "sonner";
+import { getUserByEmail } from "@/lib/actions/freelancer";
 
 export default function LoginForm() {
   const router = useRouter();
@@ -30,36 +32,42 @@ export default function LoginForm() {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+ const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    const formData = new FormData(e.currentTarget);
-    const user = Object.fromEntries(formData.entries());
+  const formData = new FormData(e.currentTarget);
+  const user = Object.fromEntries(formData.entries());
 
-    const { error } = await authClient.signIn.email({
-      email: user.email,
-      password: user.password,
-      callbackURL: redirectTo,
-    });
+  const dbUser = await getUserByEmail(user.email);
 
-    if (error) {
-      toast.error(error.message || "Invalid email or password");
-      return;
-    }
+  
+  if (!dbUser) {
+    sonnerToast.error("User not found or Your account has been blocked");
+    return;
+  }
 
-      if (!error) {
-  sonnerToast.success(
-    "Logged In successfully 🎉"
-  );
+  if (dbUser?.isBlocked === true) {
+    sonnerToast.error("Your account has been blocked.");
+    return;
+  }
+
+  const { error } = await authClient.signIn.email({
+    email: user.email,
+    password: user.password,
+    callbackURL: redirectTo,
+  });
+
+  if (error) {
+    toast.error(error.message || "Invalid email or password");
+    return;
+  }
+
+  sonnerToast.success("Logged In successfully 🎉");
 
   setTimeout(() => {
     router.push("/");
   }, 1500);
-
-  return;
-}
-  };
-
+};
   return (
     <section className="min-h-screen bg-[#fafdf9]">
       <div className="mx-auto grid min-h-screen max-w-7xl lg:grid-cols-2">

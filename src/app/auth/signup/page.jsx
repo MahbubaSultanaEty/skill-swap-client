@@ -255,11 +255,7 @@ export default function SignupPage() {
                 validate={(value) => {
                   if (value.length < 6) {
                     return "Password must be at least 6 characters";
-                  }
-
-                  if (!/[A-Z]/.test(value)) {
-                    return "One uppercase letter required";
-                  }
+                  }                 
 
                   if (!/[a-z]/.test(value)) {
                     return "One lowercase letter required";

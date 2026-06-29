@@ -29,7 +29,11 @@ export const auth = betterAuth({
   type: "string",
   required: false,
   defaultValue: "freelancer_basic"
-}
+      },
+      isBlocked: {
+      type: "boolean",
+      defaultValue: false,
+    },
   },
 },
 });
