@@ -1,11 +1,16 @@
 import { notFound } from "next/navigation";
+import FreelancerProfileClient from "@/components/freelancers/FreelancersProfileClient";
+import { serverFetch } from "@/lib/core/server";
 import { getUserByEmail } from "@/lib/actions/freelancer";
 
-
+async function getReviews(email) {
+  const data = await serverFetch(`/api/reviews?revieweeEmail=${email}`);
+  return data || [];
+}
 
 export async function generateMetadata({ params }) {
   const { email } = await params;
-  const freelancer = await getFreelancerByEmail(decodeURIComponent(email));
+  const freelancer = await getUserByEmail(decodeURIComponent(email));
   if (!freelancer) return { title: "Freelancer Not Found | SkillSwap" };
 
   return {
@@ -20,12 +25,12 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function FreelancerProfilePage({ params }) {
-    const { email } = await params;
-  //   console.log("raw email:", email);
-  // console.log("decoded email:", decodeURIComponent(email));
-    const freelancer = await getUserByEmail(decodeURIComponent(email));
-    // console.log(freelancer);
+  const { email } = await params;
+  const decoded = decodeURIComponent(email);
+  const freelancer = await getUserByEmail(decoded);
   if (!freelancer) notFound();
 
-  return <FreelancerProfileClient freelancer={freelancer} />;
+  const reviews = await getReviews(decoded);
+
+  return <FreelancerProfileClient freelancer={freelancer} reviews={reviews} />;
 }

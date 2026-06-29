@@ -1,10 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { Button, Chip } from "@heroui/react";
 import { Table } from "@heroui/react";
-import { Calendar, Clock, DollarSign, User } from "lucide-react";
+import { Calendar, Clock, User } from "lucide-react";
 import { serverMutation } from "@/lib/core/server";
 
 const STATUS_STYLE = {
@@ -15,10 +14,8 @@ const STATUS_STYLE = {
 };
 
 export default function ManageProposalsClient({ proposals }) {
-  const router = useRouter();
   const [loadingId, setLoadingId] = useState(null);
 
-  
   const grouped = proposals.reduce((acc, proposal) => {
     const key = proposal.taskId;
     if (!acc[key]) acc[key] = [];
@@ -26,26 +23,13 @@ export default function ManageProposalsClient({ proposals }) {
     return acc;
   }, {});
 
-const handleStatusUpdate = async (proposal, status) => {
-  if (status === "Accepted") {
-    const taskProposals = grouped[proposal.taskId];
-    const alreadyAccepted = taskProposals.some((p) => p.status === "Accepted");
-    if (alreadyAccepted) return;
-  }
+  const handleReject = async (proposal) => {
+    setLoadingId(proposal._id);
+    await serverMutation(`/api/proposals/${proposal._id}/status`, { status: "Rejected" }, "PATCH");
+    setLoadingId(null);
+    window.location.reload();
+  };
 
-  setLoadingId(proposal._id);
-
-  await serverMutation(`/api/proposals/${proposal._id}/status`, { status }, "PATCH");
-
-  if (status === "Accepted") {
-    await serverMutation(`/api/tasks/${proposal.taskId}/status`, { status: "In Progress" }, "PATCH");
-    // TODO: Stripe checkout
-    // router.push(`/payment/checkout?proposalId=${proposal._id}&taskId=${proposal.taskId}&amount=${proposal.proposedBudget}`);
-  }
-
-  setLoadingId(null);
-  window.location.reload();
-};
   if (proposals.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-24 text-center rounded-2xl border border-neutral-100 bg-white">
@@ -81,7 +65,9 @@ const handleStatusUpdate = async (proposal, status) => {
                 </p>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-xs text-gray-400">{taskProposals.length} proposal{taskProposals.length > 1 ? "s" : ""}</span>
+                <span className="text-xs text-gray-400">
+                  {taskProposals.length} proposal{taskProposals.length > 1 ? "s" : ""}
+                </span>
                 {hasAccepted && (
                   <Chip size="sm" style={{ background: "#dcfce7", color: "#15803d" }}>
                     Hired
@@ -151,20 +137,29 @@ const handleStatusUpdate = async (proposal, status) => {
                           <Table.Cell>
                             {isPending && (
                               <div className="flex items-center gap-2">
-                                <Button
-                                  size="sm"
-                                  isDisabled={hasAccepted || isLoading}
-                                  isLoading={isLoading}
-                                  onPress={() => handleStatusUpdate(proposal, "Accepted")}
-                                  style={{ background: "#15803d", color: "#fff" }}
-                                >
-                                  Accept
-                                </Button>
+                                {/* Accept — Stripe form */}
+                                <form action="/api/payment" method="POST">
+                                  <input type="hidden" name="price" value={proposal.proposedBudget} />
+                                  <input type="hidden" name="title" value={proposal.taskTitle} />
+                                  <input type="hidden" name="taskId" value={proposal.taskId} />
+                                  <input type="hidden" name="proposalId" value={proposal._id} />
+                                  <input type="hidden" name="freelancerEmail" value={proposal.freelancerEmail} />
+                                  <button
+                                    type="submit"
+                                    disabled={hasAccepted}
+                                    className="text-xs font-semibold px-3 py-1.5 rounded-xl transition disabled:opacity-50"
+                                    style={{ background: "#15803d", color: "#fff" }}
+                                  >
+                                    Accept & Pay
+                                  </button>
+                                </form>
+
+                                {/* Reject */}
                                 <Button
                                   size="sm"
                                   isDisabled={isLoading}
                                   isLoading={isLoading}
-                                  onPress={() => handleStatusUpdate(proposal, "Rejected")}
+                                  onPress={() => handleReject(proposal)}
                                   style={{ background: "#fee2e2", color: "#991b1b" }}
                                 >
                                   Reject

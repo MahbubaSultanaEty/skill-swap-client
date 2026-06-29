@@ -1,12 +1,10 @@
-// components/freelancers/FreelancerProfileClient.jsx
-
 "use client";
 
 import { Chip } from "@heroui/react";
 import { Mail, Briefcase, Calendar, ArrowLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-export default function FreelancerProfileClient({ freelancer }) {
+export default function FreelancerProfileClient( { freelancer, reviews  }) {
   const router = useRouter();
 
   const joinedDate = new Date(freelancer.createdAt).toLocaleDateString("en-US", {
@@ -129,6 +127,38 @@ export default function FreelancerProfileClient({ freelancer }) {
           </div>
         )}
 
+        {/* reveiws */}
+        {reviews?.length > 0 && (
+  <div className="rounded-2xl border border-green-100 p-6" style={{ background: "#fff" }}>
+    <h2 className="font-semibold mb-4 flex items-center gap-2" style={{ color: "#14532d" }}>
+      Reviews ({reviews.length})
+    </h2>
+    <div className="flex flex-col gap-4">
+      {reviews.map((review, i) => (
+        <div
+          key={i}
+          className="p-4 rounded-xl flex flex-col gap-2"
+          style={{ background: "#f1f5f9" }}
+        >
+          <div className="flex items-center justify-between">
+            <span className="text-sm font-semibold" style={{ color: "#0f172a" }}>
+              {review.reviewerEmail}
+            </span>
+            <span className="text-sm font-bold" style={{ color: "#FFBF00" }}>
+              {"⭐".repeat(review.rating)}
+            </span>
+          </div>
+          <p className="text-sm text-gray-500">{review.comment}</p>
+          <span className="text-xs text-gray-400">
+            {new Date(review.createdAt).toLocaleDateString("en-US", {
+              month: "short", day: "numeric", year: "numeric",
+            })}
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+)}
       </div>
     </main>
   );

@@ -3,17 +3,32 @@ import { getUserSession } from "@/lib/core/session";
 import { Table, Chip, User } from "@heroui/react";
 import Link from "next/link";
 import ReviewModal from "./ReviewModal";
+import { serverFetch } from "@/lib/core/server";
 
 export const metadata = {
   title: "My Tasks Dashboard | Skill Swap",
   description: "Monitor stats, manage posted tasks, budgets, and track freelancers progress.",
 };
 
+
+
+
 export default async function MyTasksPage() {
   const user = await getUserSession();
   const currentClientId = user?.id; 
   const tasks = (await getClientTasks(currentClientId)) || [];
-  console.log(tasks);
+ 
+  // proposals fetch 
+  const proposals = await serverFetch(`/api/proposals?clientId=${currentClientId}`);
+
+  // console.log(tasks.map(t => ({ id: t._id, deliverable_url: t.deliverable_url })));
+  
+const getProposalForTask = (taskId) =>
+  proposals?.find(
+    (p) => p.taskId === taskId && (p.status === "Accepted" || p.status === "Completed")
+  );
+// console.log("task._id:", tasks.map(t => t._id));
+// console.log("proposal.taskId:", proposals.map(p => p.taskId));
 
   
   const totalTasks = tasks.length;
@@ -140,16 +155,19 @@ export default async function MyTasksPage() {
 
                           {/* review modal */}
                          
-{task.deliverable_url && (
-  <ReviewModal
-    taskId={task._id}
-    reviewerEmail={user?.email}
-    revieweeEmail={task.freelancerEmail}
-    deliverableUrl={task.deliverable_url}
-  />
-)}
+{task.deliverable_url && (() => {
+  const proposal = getProposalForTask(task._id);
+  return proposal ? (
+    <ReviewModal
+      taskId={task._id}
+      reviewerEmail={user?.email}
+      revieweeEmail={proposal.freelancerEmail}
+      deliverableUrl={task.deliverable_url}
+    />
+  ) : null;
+})()}
 
-                          {/* ৩. ডিলিট বাটন (সার্ভার অ্যাকশন ফর্ম দিয়ে জটলা ছাড়া হ্যান্ডেল করা হয়েছে) */}
+                          {/* ৩.  */}
                           <form action={handleDelete}>
                             <input type="hidden" name="taskId" value={task._id} />
                             <button 

@@ -16,7 +16,8 @@ export default function ReviewModal({
   const [hovered, setHovered] = useState(0);
   const [comment, setComment] = useState("");
   const [loading, setLoading] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
+    console.log(revieweeEmail);
 
   const handleSubmit = async () => {
     if (!rating || !comment) return;

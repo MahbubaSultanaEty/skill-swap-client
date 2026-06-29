@@ -58,7 +58,7 @@ const FreelancerCard = ({ freelancer }) => {
          
           <div className="mt-8 flex w-full items-center justify-between border-t border-neutral-100 pt-5">
 
-            <div>
+            {/* <div>
               <p className="text-xs uppercase tracking-wide text-neutral-400">
                 Rating
               </p>
@@ -66,7 +66,7 @@ const FreelancerCard = ({ freelancer }) => {
               <p className="font-bold text-amber-500">
                 ⭐ New
               </p>
-            </div>
+            </div> */}
 
             <div className="flex items-center gap-2 font-semibold text-green-700 transition-all group-hover:gap-3">
               View Profile

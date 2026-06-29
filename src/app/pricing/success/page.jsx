@@ -1,7 +1,6 @@
 import { stripe } from '@/lib/stripe'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
-import { email } from 'better-auth'
 import { createSubscription } from '@/lib/actions/subscriptions'
 
 export default async function Success({ searchParams }) {
