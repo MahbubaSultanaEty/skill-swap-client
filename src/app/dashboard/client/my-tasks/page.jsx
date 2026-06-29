@@ -2,6 +2,7 @@ import { getClientTasks } from "@/lib/api/task";
 import { getUserSession } from "@/lib/core/session";
 import { Table, Chip, User } from "@heroui/react";
 import Link from "next/link";
+import ReviewModal from "./ReviewModal";
 
 export const metadata = {
   title: "My Tasks Dashboard | Skill Swap",
@@ -14,7 +15,7 @@ export default async function MyTasksPage() {
   const tasks = (await getClientTasks(currentClientId)) || [];
   console.log(tasks);
 
-  // স্ট্যাটস ক্যালকুলেশন
+  
   const totalTasks = tasks.length;
   const inProgressTasks = tasks.filter(t => t.status?.toLowerCase() === "in progress").length;
   const totalBudget = tasks.reduce((sum, t) => sum + Number(t.budget || 0), 0);
@@ -53,23 +54,29 @@ export default async function MyTasksPage() {
         </div> */}
       </div>
 
-      {/* স্ট্যাটস কার্ড */}
+      {/* sats card*/}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
-        <div className="bg-white p-6 rounded-2xl border border-neutral-100 shadow-sm">
-          <p className="text-xs font-medium text-neutral-400 uppercase tracking-wider">Total Posted</p>
-          <p className="text-2xl font-bold text-[#92400e] mt-2">{totalTasks} Tasks</p>
-        </div>
-        <div className="bg-white p-6 rounded-2xl border border-neutral-100 shadow-sm">
-          <p className="text-xs font-medium text-neutral-400 uppercase tracking-wider">Active Progress</p>
-          <p className="text-2xl font-bold text-[#92400e] mt-2">{inProgressTasks} Running</p>
-        </div>
-        <div className="bg-white p-6 rounded-2xl border border-neutral-100 shadow-sm">
-          <p className="text-xs font-medium text-neutral-400 uppercase tracking-wider">Total Investment</p>
-          <p className="text-2xl font-bold text-[#92400e] mt-2">${totalBudget}</p>
-        </div>
-      </div>
+  {[
+    { label: "Total Posted", value: `${totalTasks} Tasks`, color: "#0f172a" },
+    { label: "Active Progress", value: `${inProgressTasks} Running`, color: "#FFBF00" },
+    { label: "Total Investment", value: `$${totalBudget}`, color: "#15803d" },
+  ].map((stat) => (
+    <div
+      key={stat.label}
+      className="p-6 rounded-2xl"
+      style={{ background: "#f1f5f9" }}
+    >
+      <p className="text-xs font-medium text-gray-400 uppercase tracking-wider">
+        {stat.label}
+      </p>
+      <p className="text-2xl font-bold mt-2" style={{ color: stat.color }}>
+        {stat.value}
+      </p>
+    </div>
+  ))}
+</div>
 
-      {/* মেইন টেবিল */}
+      {/* main table */}
       <div className="bg-white rounded-2xl border border-neutral-100 shadow-sm overflow-hidden">
         <div className="px-6 py-4 border-b border-neutral-100">
           <h2 className="text-lg font-bold text-neutral-900">All Posted Projects</h2>
@@ -119,29 +126,28 @@ export default async function MyTasksPage() {
                         <Chip className="capitalize font-semibold text-xs" color={getStatusColor(task.status)} size="sm" variant="flat">{task.status || "open"}</Chip>
                       </Table.Cell>
                       
-                      {/* অ্যাকশন বাটন সেকশন */}
+                      {/* cta */}
                       <Table.Cell className="text-right">
                         <div className="flex justify-end items-center gap-2">
                           
-                          {/* ১. ডাইনামিক শো ডিটেইলস লিংক বাটন */}
+                          {/* details */}
                           <Link 
-                            href={`/task/${task._id}`}
-                            className="text-xs font-semibold bg-neutral-100 hover:bg-neutral-200 text-neutral-700 px-3 py-1.5 rounded-xl transition"
+                            href={`/tasks/${task._id}`}
+                            className="text-xs font-semibold bg-neutral-100 hover:bg-neutral-200 text-[#92400e] px-3 py-1.5 rounded-xl transition"
                           >
                             Details
                           </Link>
 
-                          {/* ২. রিভিউ সাবমিশন বাটন (যদি ডেলিভারেবল থাকে) */}
-                          {task.deliverable_url && (
-                            <a 
-                              href={task.deliverable_url} 
-                              target="_blank" 
-                              rel="noopener noreferrer" 
-                              className="text-xs font-semibold bg-success-500 text-white px-3 py-1.5 rounded-xl hover:bg-success-600 transition shadow-sm"
-                            >
-                              Review
-                            </a>
-                          )}
+                          {/* review modal */}
+                         
+{task.deliverable_url && (
+  <ReviewModal
+    taskId={task._id}
+    reviewerEmail={user?.email}
+    revieweeEmail={task.freelancerEmail}
+    deliverableUrl={task.deliverable_url}
+  />
+)}
 
                           {/* ৩. ডিলিট বাটন (সার্ভার অ্যাকশন ফর্ম দিয়ে জটলা ছাড়া হ্যান্ডেল করা হয়েছে) */}
                           <form action={handleDelete}>

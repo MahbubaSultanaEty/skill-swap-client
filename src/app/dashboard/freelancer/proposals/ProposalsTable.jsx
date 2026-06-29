@@ -1,5 +1,3 @@
-// components/dashboard/freelancer/ProposalsTable.jsx
-
 "use client";
 
 import { Table, Chip } from "@heroui/react";
@@ -50,7 +48,7 @@ export default function ProposalsTable({ proposals }) {
                   </span>
                 </Table.Cell>
                 <Table.Cell>{proposal.estimatedDays} days</Table.Cell>
-                <Table.Cell>
+                <Table.Cell style={{ color: "#92400e" }}>
                   {new Date(proposal.submittedAt).toLocaleDateString("en-US", {
                     month: "short",
                     day: "numeric",

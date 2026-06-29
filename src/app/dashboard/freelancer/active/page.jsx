@@ -30,26 +30,26 @@ export default async function ActiveProjectsPage() {
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-        {[
-          { label: "Active", value: active.length, bg: "#fef3c7", color: "#92400e" },
-          { label: "Completed", value: completed.length, bg: "#dcfce7", color: "#15803d" },
-          { label: "Total", value: active.length + completed.length, bg: "#f1f5f9", color: "#0f172a" },
-        ].map((stat) => (
-          <div
-            key={stat.label}
-            className="rounded-2xl p-4 flex flex-col gap-1 border border-neutral-100"
-            style={{ background: stat.bg }}
-          >
-            <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
-              {stat.label}
-            </span>
-            <span className="text-3xl font-black" style={{ color: stat.color }}>
-              {stat.value}
-            </span>
-          </div>
-        ))}
-      </div>
+     <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+  {[
+    { label: "Active", value: active.length, color: "#FFBF00" },
+    { label: "Completed", value: completed.length, color: "#15803d" },
+    { label: "Total", value: active.length + completed.length, color: "#0f172a" },
+  ].map((stat) => (
+    <div
+      key={stat.label}
+      className="rounded-2xl p-4 flex flex-col gap-1"
+      style={{ background: "#f1f5f9" }}
+    >
+      <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
+        {stat.label}
+      </span>
+      <span className="text-3xl font-black" style={{ color: stat.color }}>
+        {stat.value}
+      </span>
+    </div>
+  ))}
+</div>
 
       <ActiveProjectsClient active={active} completed={completed} />
     </div>

@@ -30,7 +30,7 @@ export default function TaskCard({ task }) {
   return (
     <Link href={`/tasks/${task._id}`}>
       <Card
-        ispressable
+        ispressable="true"
         className="w-full border border-green-100 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
         style={{ background: "#fff" }}
       >

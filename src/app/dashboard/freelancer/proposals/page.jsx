@@ -33,27 +33,27 @@ export default async function MyProposalsPage() {
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 ">
-        {[
-          { label: "Total", value: proposals.length, color: "#0f172a" },
-          { label: "Pending", value: pending,  color: "#FFBF00" },
-          { label: "Accepted", value: accepted,  color: "#15803d" },
-          { label: "Rejected", value: rejected,  color: "#D10000" },
-        ].map((stat) => (
-          <div
-            key={stat.label}
-            className="rounded-2xl p-4 flex flex-col gap-1 border border-neutral-100"
-            style={{ background: stat.bg }}
-          >
-            <span className="text-xs font-semibold text-[#92400e] uppercase tracking-wider">
-              {stat.label}
-            </span>
-            <span className="text-3xl font-black" style={{ color: stat.color }}>
-              {stat.value}
-            </span>
-          </div>
-        ))}
-      </div>
+     <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+  {[
+    { label: "Total", value: proposals.length, color: "#0f172a" },
+    { label: "Pending", value: pending, color: "#FFBF00" },
+    { label: "Accepted", value: accepted, color: "#15803d" },
+    { label: "Rejected", value: rejected, color: "#D10000" },
+  ].map((stat) => (
+    <div
+      key={stat.label}
+      className="rounded-2xl p-4 flex flex-col gap-1"
+      style={{ background: "#f1f5f9" }}
+    >
+      <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
+        {stat.label}
+      </span>
+      <span className="text-3xl font-black" style={{ color: stat.color }}>
+        {stat.value}
+      </span>
+    </div>
+  ))}
+</div>
 
       {/* Table */}
       <div className="rounded-2xl border border-neutral-100 bg-white p-4">
