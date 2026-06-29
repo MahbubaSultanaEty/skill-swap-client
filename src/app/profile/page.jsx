@@ -11,7 +11,6 @@ export const metadata = {
 
 export default async function ProfilePage() {
   const session = await getUserSession();
-
   
   const userData = await getUserByEmail(session.email);
   // console.log(userData);

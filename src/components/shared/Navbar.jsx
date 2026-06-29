@@ -51,7 +51,11 @@ export default function Navbar() {
   const dashboardHref =
     user?.role === "admin" ? "/dashboard/admin" :
     user?.role === "freelancer" ? "/dashboard/freelancer" :
-    "/dashboard/client";
+        "/dashboard/client";
+  const profileHref =
+    user?.role === "admin" ? "/profile/admin" : "/profile";
+    
+  
 
   return (
     <>
@@ -130,7 +134,7 @@ export default function Navbar() {
                     <Link href={dashboardHref} className="dropdown-item">
                       <LayoutDashboard size={15} /> Dashboard
                     </Link>
-                    <Link href={`/profile`} className="dropdown-item">
+                    <Link href={profileHref} className="dropdown-item">
                       <User size={15} /> profile
                     </Link>
                     <div className="divider" />

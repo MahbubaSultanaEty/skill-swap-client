@@ -24,5 +24,5 @@ export const getFreelancers = async () => {
 
 export const getUserByEmail= async(email)=>  {   
   const data = await serverFetch(`/api/users/email/${email}`); 
-  return data;
+  return data ;
 }

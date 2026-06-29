@@ -92,7 +92,7 @@ export default function ClientDashboardHomePage({ stats, name }) {
                 fontSize: "12px",
               }}
             />
-            <Bar dataKey="value" radius={[8, 8, 0, 0]}>
+            <Bar dataKey="value"  radius={[8, 8, 0, 0]}>
               {chartData.map((entry) => (
                 <Cell key={entry.name} fill={COLORS[entry.name]} />
               ))}

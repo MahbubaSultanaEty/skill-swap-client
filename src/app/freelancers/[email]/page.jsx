@@ -11,7 +11,8 @@ async function getReviews(email) {
 export async function generateMetadata({ params }) {
   const { email } = await params;
   const freelancer = await getUserByEmail(decodeURIComponent(email));
-  if (!freelancer) return { title: "Freelancer Not Found | SkillSwap" };
+  console.log("freelancer", freelancer);
+  if (!freelancer) notFound();
 
   return {
     title: `${freelancer.name} | SkillSwap`,
