@@ -1,5 +1,6 @@
 "use client";
 
+import { serverMutation } from "@/lib/core/server";
 import { Button, Modal, Form, TextField, Label, Input, FieldError } from "@heroui/react";
 import { PencilLine } from "lucide-react";
 import { useState } from "react";
@@ -28,11 +29,11 @@ export default function EditProfileModal({ userData }) {
         : [];
     }
 
-    await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/users/${userData._id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-    });
+    await serverMutation(
+  `/api/users/${userData._id}`,
+  body,
+  "PATCH"
+);
 
     setLoading(false);
     window.location.reload();

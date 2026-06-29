@@ -12,7 +12,7 @@ export default async function Page({ searchParams }) {
 };
   const data = await getTasks();
 
-    console.log(data);
+    // console.log(data);
   return (
     <div className="p-6 space-y-6">
       {/* HEADER */}
@@ -22,7 +22,7 @@ export default async function Page({ searchParams }) {
           View and manage all platform tasks. Admin can delete tasks that violate rules.
         </p>
 
-        <p className="font-semibold text-right text-sx text-[#92400e]  bg-green-100 border-2 rounded-2xl p-2">
+        <p className="font-semibold text-right text-xs text-[#92400e]  bg-green-100 border-2 rounded-2xl p-2">
           Total {data.total} task
         </p>
       </div>

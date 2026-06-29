@@ -1,9 +1,9 @@
 import { getUserSession } from "@/lib/core/session";
 import ProposalsTable from "./ProposalsTable";
-import { serverFetch } from "@/lib/core/server";
+import { protectedFetch } from "@/lib/core/server";
 
 async function getProposals(email) {
-  const data = await serverFetch(`/api/proposals?freelancerEmail=${email}`);
+  const data = await protectedFetch(`/api/proposals?freelancerEmail=${email}`);
   return data || [];
 }
 

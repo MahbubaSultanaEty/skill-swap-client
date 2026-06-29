@@ -3,13 +3,12 @@ import { getUserSession } from "@/lib/core/session";
 import { Table, Chip, User } from "@heroui/react";
 import Link from "next/link";
 import ReviewModal from "./ReviewModal";
-import { serverFetch } from "@/lib/core/server";
+import { protectedFetch } from "@/lib/core/server";
 
 export const metadata = {
   title: "My Tasks Dashboard | Skill Swap",
   description: "Monitor stats, manage posted tasks, budgets, and track freelancers progress.",
 };
-
 
 
 
@@ -19,7 +18,7 @@ export default async function MyTasksPage() {
   const tasks = (await getClientTasks(currentClientId)) || [];
  
   // proposals fetch 
-  const proposals = await serverFetch(`/api/proposals?clientId=${currentClientId}`);
+  const proposals = await protectedFetch(`/api/proposals?clientId=${currentClientId}`);
 
   // console.log(tasks.map(t => ({ id: t._id, deliverable_url: t.deliverable_url })));
   

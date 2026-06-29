@@ -4,6 +4,7 @@ import { Table } from "@heroui/react";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import { serverMutation } from "@/lib/core/server";
+import Link from "next/link";
 
 export default function ManageTasksTable({ tasks }) {
     console.log(tasks);
@@ -33,6 +34,7 @@ export default function ManageTasksTable({ tasks }) {
             <Table.Column>Category</Table.Column>
             <Table.Column>Budget</Table.Column>
             <Table.Column>Status</Table.Column>
+            <Table.Column>Details</Table.Column>
             <Table.Column>Action</Table.Column>
           </Table.Header>
 
@@ -43,6 +45,16 @@ export default function ManageTasksTable({ tasks }) {
                 <Table.Cell>{task.category}</Table.Cell>
                 <Table.Cell>${task.budget}</Table.Cell>
                 <Table.Cell>{task.status}</Table.Cell>
+                <Table.Cell>
+                  {/* details */}
+                                            <Link 
+                                              href={`/tasks/${task._id}`}
+                                              className="text-xs font-semibold bg-neutral-100 hover:bg-neutral-200 text-[#92400e] px-3 py-1.5 rounded-xl transition"
+                                            >
+                                              Details
+                                            </Link>
+                </Table.Cell>
+
 
                 <Table.Cell>
                   <button
