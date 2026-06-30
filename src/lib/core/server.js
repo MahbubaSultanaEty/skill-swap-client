@@ -3,6 +3,8 @@ import { getTokenServer } from "../getTokenSession";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
+console.log("BASE URL:", baseUrl);
+
 
 export const authHeader = async () => {
   const token = await getTokenServer();
