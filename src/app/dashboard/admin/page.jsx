@@ -6,10 +6,7 @@ import AdminDashboardOverviewChart from "./AdminDashboardOverviewChart";
 export default async function Page() {
   const users = await getUsers();
 
-  const taskData = await getTasks({
-    page: 1,
-    perPage: 1000,
-  });
+  const taskData = await getTasks("page=1&perPage=1000");
 
   const payments = await getPayments();
 

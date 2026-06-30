@@ -1,5 +1,6 @@
 import { serverFetch } from "../core/server";
 
+
 export const getTasks = async (queryString = "") => {
   return serverFetch(`/api/tasks${queryString ? `?${queryString}` : ""}`);
 };

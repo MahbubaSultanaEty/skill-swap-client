@@ -9,10 +9,12 @@ export const authHeader = async () => {
   return token ? { authorization: `Bearer ${token}` } : {};
 };
 
+export const getTasks = async (queryString = "") => {
+  return serverFetch(`/api/tasks${queryString ? `?${queryString}` : ""}`);
+};
+
 export const serverFetch = async (path) => {
     const res = await fetch(`${baseUrl}${path}`);
-     if (!res.ok) return null;
-    // handle 401, 402, 404
     return res.json()
 }
 

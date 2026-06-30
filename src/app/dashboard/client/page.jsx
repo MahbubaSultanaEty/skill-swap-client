@@ -1,14 +1,29 @@
 import { getUserSession } from "@/lib/core/session";
-import { getClientTasks } from "@/lib/api/task";
+// import { getClientTasks } from "@/lib/api/task";
 import ClientDashboardHomePage from "./ClientDashboardHomepage";
+import { serverFetch } from "@/lib/core/server";
 
 export const metadata = {
   title: "Overview | Client Dashboard",
 };
 
+
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
+export const getClientTasks = async (clientId) => {
+  console.log("calling:", `${baseUrl}/api/tasks/${clientId}`);
+  const result = await serverFetch(`/api/tasks/${clientId}`);
+  console.log("result:", result);
+  return result;
+};
+
 export default async function ClientOverviewPage() {
   const user = await getUserSession();
+  // console.log(user);
+
   const tasks = await getClientTasks(user?.id);
+  console.log(tasks);
+  
 
   const total = tasks.length;
   const open = tasks.filter((t) => t.status === "open").length;
