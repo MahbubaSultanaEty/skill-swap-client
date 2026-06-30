@@ -6,6 +6,7 @@ import Testimonials from "@/components/homepage/Testimonials";
 import WhyChooseSkillSwap from "@/components/homepage/WhyChooseSkillSwap";
 import Footer from "@/components/shared/Footer";
 
+export const dynamic = "force-dynamic";
 
 export default function Home() {
 
