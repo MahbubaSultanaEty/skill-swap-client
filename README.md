@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+🖥️ SkillSwap — Freelance Micro-Task Platform
 
-## Getting Started
+👩‍💻 Author
 
-First, run the development server:
+Mahbuba Sultana
+Full-Stack Learning Project — Role-Based Web Application
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+🌐 Live Project
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🔗 Live Demo: https://taskhive-eight-phi.vercel.app/
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+🧠 Project Overview
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+SkillSwap is a role-based freelance micro-task marketplace simulation built for learning real-world full-stack concepts.
 
-## Learn More
+It connects:
 
-To learn more about Next.js, take a look at the following resources:
+👤 Clients (post tasks)
+🧑‍💻 Freelancers (apply & work)
+🛡️ Admin (manage platform)
+⚙️ Core Features
+🔐 Authentication System
+Email/Password login
+Google OAuth login
+Role-based access control
+JWT + HTTP-only cookies
+Persistent login session
+🧑‍💼 Client Panel
+Post / edit / delete tasks
+View freelancer proposals
+Accept / reject proposals
+Stripe payment before task start
+Task lifecycle tracking
+👨‍💻 Freelancer Panel
+Browse tasks
+Search + category filter
+Submit proposal (1 per task rule)
+Track proposal status
+Submit deliverables
+Manage profile
+🛡️ Admin Panel
+Manage users (block / unblock)
+Manage tasks
+View transactions
+📊 Dashboard Analytics
+📈 Bar Chart → Task activity
+🥧 Pie Chart → Task distribution
+📉 Line Chart → Growth & earnings
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Built using Recharts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+🔎 Advanced Features
+Feature	Description
+Pagination	Server-side (9 tasks/page)
+Search	Title-based search
+Filter	Category filtering
+Payments	Stripe checkout integration
+Security	Role-based route protection
+Workflow	Task lifecycle system
+🗄️ Database Structure
+users       → accounts & roles  
+tasks       → job posts  
+proposals   → freelancer applications  
+payments    → Stripe transactions  
+reviews     → feedback system  
+🧱 Tech Stack
+Frontend  → Next.js, Tailwind CSS, Recharts  
+Backend   → Node.js, MongoDB, Mongoose  
+Auth      → Better Auth (JWT + OAuth)  
+Payments  → Stripe API  
+🎨 UI Highlights
+Responsive (Mobile / Tablet / Desktop)
+Clean dashboard layout
+Sidebar navigation system
+Marketplace-style UI cards
+Consistent design system
+🧪 Test Accounts
+Role	Email	Password
+Admin	admin1@taskhive.com	admin1@taskhive.com
+Freelancer	freelanceruser3@gmail.com	freelanceruser3@gmail.com
+🏁 Project Goal
 
-## Deploy on Vercel
+To understand and implement real-world web application structure including authentication, role management, CRUD operations, and payment workflows.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+📌 Note
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This is a learning-focused portfolio project demonstrating practical web development concepts and system design fundamentals.
