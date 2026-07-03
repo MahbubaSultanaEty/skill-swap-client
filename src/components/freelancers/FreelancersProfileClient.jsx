@@ -64,7 +64,7 @@ export default function FreelancerProfileClient( { freelancer, reviews  }) {
             </div>
 
             <div className="mt-4">
-              <h1 className="text-2xl font-bold" style={{ color: "#14532d" }}>
+              <h1 className="text-2xl font-bold" style={{ color: "#0f172a" }}>
                 {freelancer.name}
               </h1>
               {freelancer.title && (
@@ -93,7 +93,7 @@ export default function FreelancerProfileClient( { freelancer, reviews  }) {
             className="rounded-2xl border border-green-100 p-6"
             style={{ background: "#fff" }}
           >
-            <h2 className="font-semibold mb-3" style={{ color: "#14532d" }}>
+            <h2 className="font-semibold mb-3" style={{ color: "#92400e" }}>
               About
             </h2>
             <p className="text-sm text-gray-600 leading-relaxed">{freelancer.bio}</p>
@@ -108,7 +108,7 @@ export default function FreelancerProfileClient( { freelancer, reviews  }) {
           >
             <h2
               className="font-semibold mb-4 flex items-center gap-2"
-              style={{ color: "#14532d" }}
+              style={{ color: "#92400e" }}
             >
               <Briefcase size={16} />
               Skills
@@ -130,7 +130,7 @@ export default function FreelancerProfileClient( { freelancer, reviews  }) {
         {/* reveiws */}
         {reviews?.length > 0 && (
   <div className="rounded-2xl border border-green-100 p-6" style={{ background: "#fff" }}>
-    <h2 className="font-semibold mb-4 flex items-center gap-2" style={{ color: "#14532d" }}>
+    <h2 className="font-semibold mb-4 flex items-center gap-2" style={{ color: "#92400e" }}>
       Reviews ({reviews.length})
     </h2>
     <div className="flex flex-col gap-4">

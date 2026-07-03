@@ -3,7 +3,8 @@ import { getUserSession } from "@/lib/core/session";
 import { Table, Chip, User } from "@heroui/react";
 import Link from "next/link";
 import ReviewModal from "./ReviewModal";
-import { protectedFetch } from "@/lib/core/server";
+import { protectedFetch, serverMutation } from "@/lib/core/server";
+import { TaskDeleteAlert } from "@/components/dashboard/TaskDeleteAlert";
 
 export const metadata = {
   title: "My Tasks Dashboard | Skill Swap",
@@ -44,14 +45,6 @@ const getProposalForTask = (taskId) =>
   };
 
   
-  const handleDelete = async (formData) => {
-    "use server";
-    const taskId = formData.get("taskId");
-    
-    // এখানে তোমার ডিলিট এপিআই বা ডাটাবেজ কল হবে
-    // await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/tasks/${taskId}`, { method: 'DELETE' });
-    console.log("Deleting task with ID:", taskId);
-  };
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-10 bg-neutral-50/50 min-h-screen">
@@ -167,15 +160,7 @@ const getProposalForTask = (taskId) =>
 })()}
 
                           {/* ৩.  */}
-                          <form action={handleDelete}>
-                            <input type="hidden" name="taskId" value={task._id} />
-                            <button 
-                              type="submit"
-                              className="text-xs font-semibold bg-danger-50 text-danger-600 hover:bg-danger-100 px-3 py-1.5 rounded-xl transition"
-                            >
-                              Delete
-                            </button>
-                          </form>
+                          <TaskDeleteAlert task={ task} />
 
                         </div>
                       </Table.Cell>
