@@ -2,7 +2,7 @@
 
 SkillSwap is a full-stack freelance marketplace where clients post small tasks, freelancers apply with proposals, and payments are handled securely via Stripe. Built as a portfolio project demonstrating real-world full-stack development skills.
 
-🌐 **Live Site:** [https://taskhive-eight-phi.vercel.app](https://taskhive-eight-phi.vercel.app)
+🌐 **Live Site:** [https://skill-swap-by-mahbuba.vercel.app/](https://skill-swap-by-mahbuba.vercel.app/)
 
 ---
 
